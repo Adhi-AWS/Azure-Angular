@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint --format json --silent > jsonOutput.json",
     "report": "ng-lint-report --jsonfile jsonOutput.json",
-    "ng-lint": "npm run lint && npm run report"
+    "ng-lint": "npm run lint && npm run report",
+    "SonarQube-Scan":"npm run sonar"
     
   },
   "private": true,
