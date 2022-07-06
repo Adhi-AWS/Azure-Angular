@@ -9,7 +9,7 @@ node {
   
       stage('Install dependencies') {
             nodejs(nodeJSInstallationName: 'nodejs-18.4.0'){
-            sh 'npm install'
+            sh 'npm install --legacy-peer-deps'
             echo "Modules installed"
         }
         
