@@ -9,10 +9,10 @@ pipeline {
             }
         }
     }
-      stage('Build') {
-      steps {
-        nodejs(nodeJSInstallationName: 'nodejs-18.4.0') {
-          sh "npm install --legacy-peer-deps"
+        stage('Build') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs-18.4.0') {
+                 sh "npm install --legacy-peer-deps"
         }
       }
     }
