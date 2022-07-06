@@ -8,14 +8,14 @@ node {
            }
   
       stage('Install dependencies') {
-        nodejs('nodejs') {
+            nodejs(nodeJSInstallationName: 'nodejs-18.4.0'){
             sh 'npm install'
             echo "Modules installed"
         }
         
     }
     stage('Build') {
-        nodejs('nodejs') {
+        nodejs(nodeJSInstallationName: 'nodejs-18.4.0') {
             sh 'npm run build'
             echo "Build completed"
         }
