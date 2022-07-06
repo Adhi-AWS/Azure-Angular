@@ -14,14 +14,7 @@ node {
         }
         
     }
-stage('SonarQube')
-  steps {
-        dir("sonarconfig") {
-            git branch: 'main',
-            url: 'https://github.com/Adhi-AWS/Azure-Angular.git'
-        }
-      }
-    }
+
     stage('SonarQube-Scan') {
       steps {
         nodejs(nodeJSInstallationName: 'nodejs-18.4.0') {
