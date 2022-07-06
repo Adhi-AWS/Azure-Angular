@@ -10,7 +10,7 @@
     "lint": "ng lint --format json --silent > jsonOutput.json",
     "report": "ng-lint-report --jsonfile jsonOutput.json",
     "ng-lint": "npm run lint && npm run report",
-    "sonar":"sonar-scanner"
+    "sonar":"sonarscanner-4.7"
     
   },
   "private": true,
