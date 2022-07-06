@@ -15,13 +15,4 @@ node {
         
     }
 
-    stage('SonarQube-Scan') {
-      steps {
-//         nodejs(nodeJSInstallationName: 'nodejs-18.4.0') 
-        
-          sh "mv sonarconfig/angular/sonar-project.js ."
-          sh "npm run sonar"
-        
-      }
-    }
 }
