@@ -1,0 +1,33 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ this.jsonEditorTitle }}
+</h2>
+<div mat-dialog-content>
+  <div [ngClass]="{ 'container-fluid my-3': data.description_field }">
+    <div class="w-100 mb-3" *ngIf="data.description_field">
+      <mat-label>Description</mat-label>
+      <angular-editor
+        [placeholder]="'Enter description here...'"
+        [(ngModel)]="description"
+      ></angular-editor>
+    </div>
+    <div class="w-100 mb-3">
+      <mat-label>Payload</mat-label>
+      <div #jsonEditor style="height: 400px"></div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel add-btn-editor"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-editor"
+    (click)="sendPayload()"
+    [disabled]="data.description_field && !description"
+  >
+    Submit
+  </button>
+</div>

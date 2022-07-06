@@ -1,0 +1,235 @@
+@use 'sass:map';
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+// @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+// @import "~highlight.js/styles/androidstudio.css";
+
+// @import '~normalize.css';
+// @import "~c3/c3.min.css";
+
+@import './overrides/fonts.scss';
+@import './overrides/icons.scss';
+@import './overrides/scroll-bar.scss';
+
+@import './boostrap/utilites.scss';
+@import './boostrap/grid.scss';
+@import './boostrap/text.scss';
+@import './overrides/variable.scss';
+@import './overrides/generate-theme.scss';
+
+@import './overrides/layout.scss';
+@import './overrides/helper.scss';
+@import './overrides/input.scss';
+@import './overrides/buttons.scss';
+@import './overrides/table.scss';
+
+@import './overrides/stepper.scss';
+@import './overrides/otp-input.scss';
+// @import "./overrides/c3js.scss";
+@import './overrides/calendar.scss';
+
+@import './overrides/tabs.scss';
+// @import "./ngx-datatable/ngx-datatable-custom.scss";
+
+body {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.float { float:left; }
+.fullPage {
+    width:100%;
+    height:100%;
+    background-color:inherit;
+    display: inline-block;
+}
+
+.login-body{
+  // background-image: url(https://www.htcinc.com/wp-content/uploads/2021/12/header-bg-1.png);
+  background-image: url('/assets/images/htc-main-wallpaper.jpg');
+  
+  // height:100%;
+  // width: 1200px;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+  
+  height:100%;
+  margin-right:500px;
+  margin-left:0px;
+  background-color:inherit;
+  background-repeat: no-repeat;
+  background-size:cover;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+}
+.mat-horizontal-stepper-header-container {
+  pointer-events: none !important;
+}
+
+/* profile dropdown */
+.profile-menu {
+  width: 280px;
+  max-width: unset !important;
+}
+
+// form error container
+.form-error-container {
+  min-height: 37px;
+}
+
+// control type view
+.control-type-view-expansion-panel .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+// profile dropdown
+.profile-menu {
+  button {
+    font-weight: 500;
+    line-height: 40px;
+    height: 40px;
+    font-size: 14px;
+    &.active {
+      color: #ef5425;
+    }
+  }
+}
+
+.justify-content-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.verticle-align,
+.verticle-center,
+.verticle-middle {
+  display: flex;
+  align-items: center;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.page-sub-title {
+  font-weight: 600;
+  margin: 5px 0 15px 0;
+  font-size: 14px;
+  color: #001737;
+}
+
+.side-modal-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+}
+.side-modal-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.side-modal-content {
+  position: absolute;
+  right: 0;
+  width: 580px;
+  padding: 10px 40px 40px;
+  height: 100%;
+  top: 0;
+  overflow: auto;
+  background-color: white;
+}
+.clickable {
+  cursor: pointer;
+}
+.iconpos {
+  position: absolute;
+  right: 30px;
+  background-size: 100%;
+}
+
+.mat-tab-list {
+  display: flex !important;
+  justify-content: center !important;
+}
+.leftmat .mat-tab-list {
+  display: flex !important;
+  justify-content: left !important;
+}
+
+.page-title {
+  color: map.get($mat-color-custom-list, 'primary-100');
+}
+
+pre {
+  white-space: pre-wrap;
+  margin: 0;
+  padding: 1rem;
+  font-weight: 400;
+}
+.string {
+  color: #95c602;
+}
+.number {
+  color: #f2b619;
+}
+.boolean {
+  color: #0097f1;
+}
+.null {
+  color: #727990;
+}
+.key {
+  color: #000000;
+}
+.pagetitle {
+  margin-left: 36px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #000000;
+  padding-bottom: 10px;
+}
+.breadcrum {
+  margin-left: 36px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-family: var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #000000;
+}
+.font-weight-bold{
+    font-weight: bold;
+}
+
+.mat-flat-button.mat-accentaaa {
+top: 494px;
+left: 639px;
+width: 88px;
+height: 21px;
+text-align: left;
+font: normal normal bold 16px/21px var(--htc-font-family-exo);
+letter-spacing: 0px;
+color: #FFFFFF;
+background: #00a596 0% 0% no-repeat padding-box;
+border: 4px solid #000000;
+opacity: 1;
+}

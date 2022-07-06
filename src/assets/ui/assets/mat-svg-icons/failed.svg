@@ -1,0 +1,10 @@
+<svg id="Failed" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Group_2483" data-name="Group 2483" transform="translate(2.5 2.5)">
+    <g id="Group_211" data-name="Group 211" transform="translate(0.603 0.605)">
+      <path id="Path_207" data-name="Path 207" d="M653.676,1596.252a21.9,21.9,0,1,0,21.895,21.9A21.9,21.9,0,0,0,653.676,1596.252Zm0,40.668a18.771,18.771,0,1,1,18.77-18.77A18.792,18.792,0,0,1,653.676,1636.92Z" transform="translate(-631.778 -1596.252)" fill="#c71720"/>
+      <path id="Path_208" data-name="Path 208" d="M651.8,1602.536a1.56,1.56,0,0,0-2.208,0l-4.662,4.663-4.662-4.663a1.562,1.562,0,0,0-2.208,2.21l4.662,4.662-4.662,4.66a1.562,1.562,0,1,0,2.208,2.21l4.662-4.662,4.662,4.662a1.562,1.562,0,0,0,2.208-2.21l-4.662-4.66,4.662-4.662A1.563,1.563,0,0,0,651.8,1602.536Z" transform="translate(-623.045 -1587.511)" fill="#c71720"/>
+    </g>
+    <rect id="Rectangle_193" data-name="Rectangle 193" width="45" height="45" fill="none"/>
+  </g>
+  <rect id="Rectangle_194" data-name="Rectangle 194" width="50" height="50" fill="none"/>
+</svg>

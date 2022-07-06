@@ -1,0 +1,222 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('./../../assets/iconfonts/icomoon.eot?3jk1ih');
+  src: url('./../../assets/iconfonts/icomoon.eot?3jk1ih#iefix')
+      format('embedded-opentype'),
+    url('./../../assets/iconfonts/icomoon.ttf?3jk1ih') format('truetype'),
+    url('./../../assets/iconfonts/icomoon.woff?3jk1ih') format('woff'),
+    url('./../../assets/iconfonts/icomoon.svg?3jk1ih#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  // font-family: icomoon !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-checkbox-icon .path1:before {
+  content: '\e900';
+  color: rgb(118, 123, 135);
+}
+.icon-checkbox-icon .path2:before {
+  content: '\e901';
+  margin-left: -1em;
+  color: none;
+}
+.icon-checkbox-icon .path3:before {
+  content: '\e902';
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-person-icon:before {
+  content: '\e903';
+  color: #767b87;
+}
+.icon-email-icon:before {
+  content: '\e904';
+  color: #767b87;
+}
+.icon-eye-icon:before {
+  content: '\e905';
+  color: #767b87;
+}
+.icon-cancel-icon:before {
+  content: '\e906';
+}
+
+// custom icons will go here
+
+.aws {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/AWS_2x.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.gcp {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/googleCloud_2x.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.openstack {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/openstack_2x.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.azure {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/Azure_2x.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.azure-small-icon {
+  width: 75px;
+  height: 48px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/Azure_2x.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.vmware {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/vmware.svg')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/delete.svg') no-repeat center
+    center;
+  background-size: 100%;
+}
+
+.ansible {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/ansible.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.redhatopenstack {
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/subscription/redhat_openstack.png')
+    no-repeat center center;
+  background-size: 100%;
+}
+
+.three-dots-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/3-v-dots.svg') no-repeat center
+    center;
+  background-size: 100%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(359deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+.success-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/status-success.svg') no-repeat
+    center center;
+  background-size: contain;
+}
+
+.edit-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/edit.svg') no-repeat center
+    center;
+  background-size: 100%;
+}
+
+.play-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/play.svg') no-repeat center
+    center;
+  background-size: contain;
+}
+
+.pending-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/status-pending.svg') no-repeat
+    center center;
+  background-size: contain;
+}
+
+.pending-icon-circle {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/status-pending-circle.svg')
+    no-repeat center center;
+  background-size: contain;
+}
+
+.error-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url('./../../assets/images/icons/status-error.svg') no-repeat
+    center center;
+  background-size: contain;
+}

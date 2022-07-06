@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row block-header perf-mid-bar">
+    <div class="col-md-12" style="position: relative">
+      <p class="text-center text-white">Maintenance Mode</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <app-shared-table
+      *ngIf="maintenanceModeData"
+      [columns]="maintenanceModeColumns"
+      [data]="maintenanceModeData"
+      [isPagination]="true"
+      [isDelete]="false"
+      (editAction)="onEditClick($event)"
+    ></app-shared-table>
+  </div>
+</div>

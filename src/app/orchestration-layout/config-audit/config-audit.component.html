@@ -1,0 +1,78 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> Config Audit</span>
+</div>
+<div class="pagetitle">
+  <span>Config Audit</span>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 my-1">
+      <div class="search-box">
+        <span
+          *ngIf="operation_name"
+          class="search-btn clickable"
+          (click)="clearOperationName()"
+          ><span class="clear-icon"></span
+        ></span>
+        <input
+          class="search-txt"
+          type="text"
+          name="operationSearch"
+          placeholder="Enter Operation Name"
+          [(ngModel)]="operation_name"
+          (input)="onOperationNameInput()"
+        />
+      </div>
+    </div>
+    <div class="col-md-4 my-1">
+      <div class="search-box">
+        <span
+          *ngIf="config_name"
+          class="search-btn clickable"
+          (click)="clearConfigName()"
+          ><span class="clear-icon"></span
+        ></span>
+        <input
+          class="search-txt"
+          type="text"
+          name="configNameSearch"
+          placeholder="Enter Config Name"
+          [(ngModel)]="config_name"
+          (input)="onConfigNameInput()"
+        />
+      </div>
+    </div>
+    <div class="col-md-1 my-2 ms-3">
+      <button
+        class="custom-btn-md me-2 btnCancel add-btn-config"
+        (click)="search()"
+        [disabled]="!operation_name && !config_name"
+      >
+        Search
+      </button>
+    </div>
+    <div class="col-md-1 my-2 ms-auto refresh-div" *ngIf="configAuditData">
+      <button
+        class="custom-btn-md me-2 btnCancel add-btn-config"
+        (click)="refreshTable()"
+      >
+        Refresh
+      </button>
+    </div>
+    <app-shared-table
+      *ngIf="configAuditData"
+      [columns]="configAuditColumns"
+      [data]="configAuditData"
+      [isFilter]="false"
+      [isPagination]="false"
+    ></app-shared-table>
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+      (page)="onPageEvent($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

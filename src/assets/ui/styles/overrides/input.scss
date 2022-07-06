@@ -1,0 +1,230 @@
+@use 'sass:map';
+@import './variable.scss';
+
+// All Input
+// label font-size 12 px
+// text font size 14px semibold
+
+.mat-form-field {
+  font-size: 14px;
+
+  .mat-input-element {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .mat-form-field-infix {
+    padding: 0.606em 0 !important;
+  }
+
+  .mat-form-field-label {
+    color: #767b87;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 7px;
+  }
+
+  .mat-form-field-prefix,
+  .mat-form-field-suffix {
+    top: -4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .mat-form-field-prefix {
+    padding-right: 4px;
+  }
+
+  // mat select
+  .mat-select {
+    height: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .mat-select-arrow-wrapper {
+    transform: translateY(0) !important;
+  }
+}
+
+.mat-option-text {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mat-form-field-subscript-wrapper {
+  font-size: 12px;
+  // margin-top: 0;
+  // top: calc(100% - 2em);
+}
+
+// To hide auto complete style
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.mat-form-field-appearance-standard .mat-form-field-flex {
+  padding-top: 0px !important;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+.custom-mat-label,
+.mat-form-field-can-float
+  .mat-input-server:focus
+  + .mat-form-field-label-wrapper
+  .mat-form-field-label {
+  font-size: 12px;
+  margin-top: 2px;
+  font-weight: 500;
+  color: #767b87;
+  transform: translateY(-1.34373em) scale(1);
+}
+
+/* Chrome, Safari, Edge, Opera */
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+//   -webkit-appearance: none;
+//   margin: 0;
+// }
+
+/* Firefox */
+// input[type='number'] {
+//   -webkit-appearance: none;
+//   margin: 0;
+//   -moz-appearance: textfield;
+// }
+
+/* Radio Button */
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0;
+
+  .mat-radio-button {
+    margin-right: 5px;
+  }
+}
+
+.example-radio-group-inline {
+  display: flex;
+  margin: 12px 0;
+
+  .mat-radio-button {
+    margin-right: 5px;
+  }
+}
+
+/* Search input*/
+.search-box {
+  height: 20px;
+  width: 328px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #e7eaf4;
+  background: #e7eaf4;
+
+  .search:hover > .search-txt {
+    width: 180px;
+    padding: 0 10px;
+  }
+  .search:hover > .search-btn {
+    background: white;
+  }
+  .search-btn {
+    float: left;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    padding-left: 10px;
+    transition: ease-in 0.4s;
+    line-height: 20px;
+    width: 280px;
+  }
+}
+
+// mat select orange checkbox
+.mat-primary .mat-pseudo-checkbox-checked,
+.mat-primary .mat-pseudo-checkbox-indeterminate {
+  background: #f7714d;
+}
+
+.mat-simple-snackbar {
+  font-size: 14px;
+}
+
+// radio button
+.mat-radio-label-content,
+.mat-checkbox-label {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+// mat select like menu
+.custom-mat-select {
+  .mat-form-field-flex {
+    align-items: center;
+  }
+  .mat-select-value-text {
+    font-size: 14px;
+    color: map.get($mat-color-custom-list, 'primary-100');
+  }
+  .mat-select-placeholder {
+    font-size: 14px;
+    color: map.get($mat-color-custom-list, 'primary-100');
+  }
+  .mat-form-field-infix {
+    padding-top: 0 !important;
+    border-top: 0 !important;
+  }
+  .mat-form-field-prefix {
+    padding: 0.607em 0.5em 0.606em 0 !important;
+  }
+  .mat-form-field-underline {
+    display: none !important;
+  }
+  .mat-form-field-wrapper {
+    padding-bottom: 5px;
+  }
+}
+
+.perf-mid-bar {
+  .date-select {
+    .mat-form-field-infix {
+      width: 55px;
+    }
+    .mat-form-field .mat-input-element {
+      color: #fff;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      background-color: transparent;
+    }
+    .mat-datepicker-toggle,
+    .mat-datepicker-content .mat-calendar-next-button,
+    .mat-datepicker-content .mat-calendar-previous-button {
+      color: rgb(255 255 255);
+    }
+    .mat-form-field-prefix {
+      top: 1px;
+    }
+  }
+}
+
+.mat-form-field-label mat-label {
+  pointer-events: auto;
+}

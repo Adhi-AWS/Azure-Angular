@@ -1,0 +1,33 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  Add Resource Adaptor
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="addAdapterForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Cloud Provider</mat-label>
+        <input matInput type="text" formControlName="cloud_provider" required />
+        <mat-error>
+          <span *ngIf="addAdapterForm.controls.cloud_provider.errors?.required"
+            >Cloud Provider is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+     mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel addBtn"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit addBtn"
+    (click)="addAdapter()"
+    [disabled]="!addAdapterForm.valid"
+  >
+    Add
+  </button>
+</div>

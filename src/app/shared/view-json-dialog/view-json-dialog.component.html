@@ -1,0 +1,26 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ data.title }}
+</h2>
+<div mat-dialog-content>
+  <pre [innerHtml]="data.data | prettyjson: 4"></pre>
+
+  <div *ngIf="data.parallel_tasks_list">
+    <div class="m-3" *ngFor="let item of data.parallel_tasks_list">
+      <div *ngIf="item.message">
+        <strong>{{ item.state }}</strong>
+        <br />
+        <pre class="view-json" [innerHtml]="item.message | prettyjson: 4"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-dialog-close
+    color="accent"
+    class="custom-btn-md ms-auto"
+    mat-flat-button
+  >
+    Close
+  </button>
+</div>

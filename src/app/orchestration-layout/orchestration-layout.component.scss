@@ -1,0 +1,51 @@
+.orch-container {
+  height: calc(100vh - 100px);
+  overflow-y: scroll !important;
+
+  * {
+    overflow: scroll !important;
+  }
+}
+
+// @use 'sass:map';
+// @import 'overrides/variable.scss';
+
+// .orch-main {
+//   height: calc(100vh - 55px);
+//   .orch-drawer-container {
+//     height: 100%;
+//     .drawer-inner-content {
+//       height: 100%;
+//       overflow: auto;
+//     }
+//   }
+// }
+
+// .perf-mid-bar {
+//   background: map.get($mat-color-custom-list, 'secondary-90');
+//   line-height: 48px;
+
+//   p {
+//     font-weight: 500;
+//     margin: 0;
+//   }
+// }
+
+// .toggle-btn {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   min-width: 20px;
+// }
+
+// .mat-drawer-container {
+//   overflow: visible;
+// }
+
+// .mat-drawer {
+//   overflow: visible;
+// }
+
+// .mat-drawer-inner-container {
+//   overflow: visible;
+// }

@@ -1,0 +1,38 @@
+@use 'sass:map';
+@import 'overrides/variable.scss';
+
+.perf-mid-bar {
+  // background: map.get($mat-color-custom-list, 'primary-100');
+  height: 27px;
+  padding: 10px;
+}
+
+.mat-form-field {
+  width: 95%;
+  height: 60px;
+}
+.searcheading{
+text-align: left;
+margin-bottom: 0px;
+font-size:  16px;
+font-weight: bold;
+font-family: var(--htc-font-family-exo);
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+}
+.advanceSearchLink {
+  text-decoration: underline;
+  cursor: pointer;
+  float: right;
+  margin-right:30px;
+  color: #00a596;
+}
+.mat-dialog-content{
+  max-height: 85%;
+}
+
+.add-btn-trans-comp{
+  height: 40px !important;
+  margin-left: 5px;
+}

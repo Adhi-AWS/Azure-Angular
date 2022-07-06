@@ -1,0 +1,127 @@
+<div class="main-flow-div">
+  <div class="single-flow-div" *ngFor="let item of flowData">
+    <div class="flow-node">
+      <div class="circle-div">
+        <div
+          class="circle clickable"
+          [ngClass]="{
+            success: ['finished', 'success', 'complete', 'completed'].includes(
+              item.status
+            ),
+            failure: ['failure', 'failed', 'error'].includes(item.status),
+            'in-progress': [
+              'in progress',
+              'in_progress',
+              'in-progress'
+            ].includes(item.status),
+            'in-queue': [
+              'in queue',
+              'in_queue',
+              'in-queue',
+              'recieved',
+              'received'
+            ].includes(item.status),
+            'not-started': [
+              'not started',
+              'not_started',
+              'not-started',
+              'not initiated',
+              'not_initiated',
+              'not-initiated'
+            ].includes(item.status)
+          }"
+          (click)="openViewJsonDialog(item)"
+        >
+        <img
+        *ngIf="
+           ['finished', 'success', 'complete', 'completed'].includes(
+             item.status
+           )
+         "
+         class="process-img mx-3"
+         src="assets/images/icons/complete.png"
+         alt=""
+       />
+       <img
+       *ngIf="
+          ['SKIPPED', 'skipped', 'skip'].includes(
+            item.status
+          )
+        "
+        class="process-img mx-3"
+        src="assets/images/icons/skip.png"
+        alt=""
+      />
+       <img
+       *ngIf="['failure', 'failed', 'error'].includes(item.status)"
+
+       src="assets/images/icons/failed.png"
+       alt=""
+        />
+        <img
+
+        *ngIf="
+          ['in progress', 'in_progress', 'in-progress'].includes(
+            item.status
+          )
+        "
+          class="process-img mx-3"
+           src="assets/images/icons/loading.gif"
+           alt=""
+        />
+          <img
+            *ngIf="
+              [
+                'in queue',
+                'in_queue',
+                'in-queue',
+                'recieved',
+                'received'
+              ].includes(item.status)
+            "
+            class="queue-img mx-3"
+            src="assets/images/icons/rotate-cw.svg"
+            alt=""
+          />
+          <img
+          *ngIf="
+             [
+               'not started',
+               'not_started',
+               'not-started',
+               'not initiated',
+               'not_initiated',
+               'not-initiated'
+             ].includes(item.status)
+           "
+           class="process-img mx-3"
+           src="assets/images/icons/pending.png"
+           alt=""
+         />
+        </div>
+      </div>
+
+      <p class="state-title">{{ item.state }}</p>
+
+      <p *ngIf="item.timestamp" class="state-timestamp margin-cls">
+        {{ item.timestamp }}
+      </p>
+      <div class="state-title" [ngClass]="!item.timestamp ? 'technologyIcon' : ''"><img *ngIf="item.technology"
+            class="technology-img mx-3" alt="{{ item.technology }} task"
+            src="assets/images/icons/{{ item.technology }}.png" alt="Loading Image"
+      /></div>
+      <a
+        *ngIf="item.parallel_tasks?.length"
+        href="javascript:void(0)"
+        (click)="viewParallelTasks(item.state, item.parallel_tasks)"
+        class="custom-btn-link parallel-tasks margin-cls"
+      >
+        View Parallel Tasks
+      </a>
+    </div>
+
+    <div class="arrow" *ngIf="!item.end">
+      <mat-icon class="normal-icon" [svgIcon]="'arrows'"></mat-icon>
+    </div>
+  </div>
+</div>

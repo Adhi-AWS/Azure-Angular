@@ -1,0 +1,112 @@
+<div
+  *ngIf="visible"
+  [ngClass]="{ 'snackbar-overlay': showOverlay === true }"
+  [@inOutAnimation]
+  (click)="close()"
+>
+  <div
+    class="snackbar"
+    *ngIf="!isLoading"
+    [@inOutAnimation]
+    appClickStopPropagation
+  >
+    <div *ngIf="isMessage" [@inOutAnimation]>
+      <h1
+        class="mat-dialog-title"
+        [class.successTitleCls]="isSuccess"
+        [class.failureTitleCls]="!isSuccess"
+        [class.normalTitleCls]="isSuccess === null"
+      >
+        {{ titleMessage }}
+      </h1>
+      <div class="mat-dialog-content">
+        <div class="statusContent">
+          <div class="message" *ngFor="let msg of message">
+            <div class="message-list">
+              {{ msg }}<span *ngIf="msg.substr(-1) !== '.'">.</span>
+            </div>
+          </div>
+          <div class="mat-dialog-actions">
+            <!-- <button
+              mat-flat-button
+              color="accent"
+              class="custom-btn-md"
+              (click)="confirm(true)"
+            >
+              {{ messageButtonText !== false ? messageButtonText : '' }}
+            </button> -->
+            <button
+              mat-raised-button
+              color="secondary"
+              class="custom-btn-md"
+              (click)="confirm(false)"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isProgress" [@inOutAnimation] class="message">
+      <h4 class="">{{ message }}</h4>
+      <mat-progress-bar
+        *ngIf="!indeterminate"
+        mode="determinate"
+        value="{{ progressValue + '' }}"
+      >
+      </mat-progress-bar>
+      <mat-progress-bar *ngIf="indeterminate" mode="indeterminate">
+      </mat-progress-bar>
+    </div>
+    <div *ngIf="isConfirm" [@inOutAnimation]>
+      <h1 class="mat-dialog-title normalTitleCls">{{ titleMessage }}</h1>
+      <div class="mat-dialog-content">
+        <div class="statusContent">
+          <div class="message message-list">
+            <span> {{ message }} </span>
+          </div>
+          <div class="mat-dialog-actions">
+            <button
+              color="accent"
+              class="custom-btn-md"
+              mat-flat-button
+              (click)="confirm(true)"
+            >
+              {{ confirmYesText !== false ? confirmYesText : 'Yes' }}
+            </button>
+            <button
+              mat-raised-button
+              color="secondary"
+              class="custom-btn-md"
+              (click)="confirm(false)"
+            >
+              {{ confirmNoText !== false ? confirmNoText : 'No' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isLoading" [@inOutAnimation] class="loader-snackbar">
+    <div>
+      <h4 *ngIf="message" class="text-bold text-x-larger text-white">
+        {{ message }}
+      </h4>
+      <div class="spinnerAlignment">
+        <mat-progress-spinner
+          [diameter]="70"
+          *ngIf="!indeterminate"
+          mode="determinate"
+          value="{{ progressValue + '' }}"
+        >
+        </mat-progress-spinner>
+        <mat-progress-spinner
+          [diameter]="70"
+          *ngIf="indeterminate"
+          mode="indeterminate"
+        >
+        </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+</div>

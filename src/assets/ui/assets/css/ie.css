@@ -1,0 +1,14 @@
+.no-browser-support {
+  display: none;
+}
+.show-ie-banner .no-browser-support {
+  display: block;
+  width: 600px;
+  border: 1px #ddd solid;
+  padding: 32px;
+  margin: 120px auto;
+}
+
+.show-ie-banner .root-cmp {
+  display: none !important;
+}

@@ -1,0 +1,73 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+    {{ data.subCategory_title }} Sub Category
+  </h2>
+  <div mat-dialog-content>
+    <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+      <div class="row">
+        <mat-form-field class="w-100 mb-3" appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" required />
+          <mat-error>
+            <span *ngIf="addUpdateForm.controls.name.errors?.required"
+              >Name is mandatory.
+            </span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100 mb-3" appearance="standard">
+          <mat-label>Description</mat-label>
+          <input matInput type="text" formControlName="description" required />
+          <mat-error>
+            <span *ngIf="addUpdateForm.controls.description.errors?.required"
+              >Description is mandatory.
+            </span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="this.data.subCategory_title === 'Update'" class="w-100 mb-3" appearance="standard">
+          <mat-select  placeholder="Enter Status" formControlName="status">
+            <mat-option *ngFor="let item of statusList" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
+          <mat-error>
+              <span *ngIf="addUpdateForm.controls.status.errors?.required"
+                >Status is mandatory.
+              </span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-select  placeholder="Select Category" formControlName="category">
+              <mat-option *ngFor="let item of category_list" [value]="item.id">
+                {{ item.name | titlecase }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+                <span *ngIf="addUpdateForm.controls.category.errors?.required"
+                  >Category is mandatory.
+                </span>
+              </mat-error>
+          </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button
+    mat-dialog-close
+      class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-comp"
+    >
+      Close
+    </button>
+    <button
+      class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-comp"
+      (click)="onReset()"
+    >
+      Reset
+    </button>
+    <button
+      class="custom-btn-md m-0  btnSubmit add-btn-dil-comp"
+      (click)="addUpdateSubCategory()"
+      [disabled]="!isValid"
+    >
+      {{ data.subCategory_title }}
+    </button>
+  </div>
+  

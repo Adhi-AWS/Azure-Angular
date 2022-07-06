@@ -1,0 +1,45 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ 'Map Adapter to Queue: ' + data.payload.queue_name }}
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="mapAdapterForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Cloud Provider</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          formControlName="cloud_provider"
+          multiple
+          required
+        >
+          <mat-option
+            *ngFor="let cp of cloud_provider_list"
+            [value]="cp.cloud_provider"
+          >
+            {{ cp.cloud_provider }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="mapAdapterForm.controls.cloud_provider.errors?.required"
+            >Cloud Provider is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+  mat-dialog-close
+    class="custom-btn-md ms-auto me-3  btnCancel add-btn-adp-comp"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-adp-comp"
+    (click)="mapAdapter()"
+    [disabled]="!mapAdapterForm.valid"
+  >
+    Map
+  </button>
+</div>

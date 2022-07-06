@@ -1,0 +1,76 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ data.plan_title }} Plan
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.plan_title === 'Add' || data.plan_title === 'Clone'"
+      >
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.name.errors?.required"
+            >Name is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.plan_title === 'Add' || data.plan_title === 'Clone'"
+      >
+        <mat-label>Cloud Provider</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          formControlName="cloud_provider"
+          required
+        >
+          <mat-option
+            *ngFor="let cp of cloud_provider_list"
+            [value]="cp.cloud_provider"
+          >
+            {{ cp.screen_name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.cloud_provider.errors?.required"
+            >Cloud Provider is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Execution Plan</mat-label>
+        <textarea matInput formControlName="execution_plan" required></textarea>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.execution_plan.errors?.required"
+            >Execution Plan is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+  mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-comp"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-comp"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-dil-comp"
+    (click)="addUpdatePlan()"
+    [disabled]="!isValid"
+  >
+    {{ data.plan_title }}
+  </button>
+</div>

@@ -1,0 +1,37 @@
+<div class="breadcrum">
+    <span>Configuration/</span>
+    <span class="font-weight-bold">Oauth Management</span>
+  </div>
+  <div class="pagetitle">
+    <span>Oauth Management</span>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="mt-3 ms-auto add-btn-div">
+        <button
+          class="custom-btn-md me-2 btnSubmit add-btn-comp"
+          (click)="onAddClick()"
+        >
+        
+          Add Oauth
+        </button>
+      </div>
+      <app-shared-table
+        *ngIf="manageOauthData"
+        [columns]="manageApplicationColumns"
+        [data]="manageOauthData"
+        [isFilter]="true"
+        [isPagination]="false" 
+        (valueClick)="openApplicationDetailsDialog($event)"
+        (editAction)="onEditClick($event)"        
+        (deleteAction)="onDeleteClick($event)"
+      ></app-shared-table>
+      <mat-paginator
+        #paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        showFirstLastButtons
+        (page)="onPageEvent($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>

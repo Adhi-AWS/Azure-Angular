@@ -1,0 +1,216 @@
+<div class="breadcrum">
+    <span>Configuration/</span>
+    <span class="font-weight-bold"> Manage Product Item</span>
+  </div>
+  <div class="pagetitle">
+    <span>Manage Product Item</span>
+  </div>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-2">
+      <mat-label>Cloud Provider</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="cloud_provider"
+        (selectionChange)="getCategoryList()"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="cp_input"
+          (ngModelChange)="onSearch('cloud_provider')"
+        />
+        <mat-option
+          *ngFor="let cp of filtered_cloud_provider_list"
+          [value]="cp"
+        >
+          {{ cp | titlecase }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <mat-label>Category</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="category"
+        (closed)="dropDownClosed()"
+        (selectionChange)="getSubCategoryData()"
+        [disabled]="!cloud_provider"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="tn_input"
+          (ngModelChange)="onSearch('category')"
+        />
+        <mat-option *ngFor="let category of filtered_category_list" [value]="category">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+        <mat-label>Sub Category</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          [(ngModel)]="subCategory"
+          (closed)="dropDownClosed()"
+          (selectionChange)="getProductList()"
+          [disabled]="!category"
+        >
+          <input
+            matInput
+            placeholder="Search here "
+            autocomplete="off"
+            class="dropdown-input-search"
+            [(ngModel)]="sn_input"
+            (ngModelChange)="onSearch('subCategory')"
+          />
+          <mat-option *ngFor="let subCategory of filtered_subCategory_list" [value]="subCategory">
+            {{ subCategory.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-2">
+        <mat-label>Product Item</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          [(ngModel)]="product"
+          (closed)="dropDownClosed()"
+          (selectionChange)="displayForm('Update')"
+          [disabled]="!subCategory"
+        >
+          <input
+            matInput
+            placeholder="Search here "
+            autocomplete="off"
+            class="dropdown-input-search"
+            [(ngModel)]="pn_input"
+            (ngModelChange)="onSearch('product')"
+          />
+          <mat-option *ngFor="let product of filtered_product_list" [value]="product">
+            {{ product.name }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-2">
+        <button
+          [ngClass] = "!product?.id ? 'disabled' : ''"
+          class="custom-btn-md me-2 btnSubmit add-btn-mag-category"
+          (click)="deleteProduct()"
+        >
+          Delete Product
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button
+          [ngClass] = "!subCategory ? 'disabled' : ''"
+          class="custom-btn-md me-2 btnSubmit add-btn-mag-category"
+          (click)="onAddClick()"
+        >
+          Add Product
+        </button>
+      </div>
+  </div>
+  <div *ngIf="product" class="row mt-2">
+    <div class="row mb-0 offset-2 col-10" style="height: 25px;">
+    <h2 class="font-bold">{{this.form_title}} Product</h2>
+    </div>
+    <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+        <div class="row offset-2 col-8 border">
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" required />
+            <mat-error>
+              <span *ngIf="addUpdateForm.controls.name.errors?.required"
+                >Name is mandatory.
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description" required />
+            <mat-error>
+              <span *ngIf="addUpdateForm.controls.description.errors?.required"
+                >Description is mandatory.
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Logo Base 64</mat-label>
+            <textarea matInput formControlName="logo_base64" required></textarea>
+            <mat-error>
+              <span *ngIf="addUpdateForm.controls.logo_base64.errors?.required"
+                >Logo base64 is mandatory.
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Price</mat-label>
+            <input matInput type="text" formControlName="price" required />
+            <mat-error>
+              <span *ngIf="addUpdateForm.controls.price.errors?.required"
+                >Price is mandatory.
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Ui Layout</mat-label>
+            <textarea type (click)="addUiLayoutData()" matInput formControlName="ui_layout" value="addUpdateForm.controls.ui_layout.value | json" required></textarea>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Select Status</mat-label>
+            <mat-select formControlName="status" placeholder="Enter Status">
+              <mat-option *ngFor="let item of statusList" [value]="item">
+                {{ item  }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+                <span *ngIf="addUpdateForm.controls.status.errors?.required"
+                  >Status is mandatory.
+                </span>
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Select Htc marketplace</mat-label>
+            <mat-select  placeholder="Enter Htc marketplace" formControlName="htc_marketplace">
+              <mat-option *ngFor="let item of htc_marketplace_list" [value]="item">
+                {{ item  }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+                <span *ngIf="addUpdateForm.controls.htc_marketplace.errors?.required"
+                  >Htc marketplace is mandatory.
+                </span>
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100 mb-3" appearance="standard">
+            <mat-label>Select Cloud Marketplace</mat-label>
+            <mat-select  placeholder="Enter Cloud Marketplace" formControlName="cloud_marketplace">
+              <mat-option *ngFor="let item of cloud_marketplace_list" [value]="item">
+                {{ item  }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+                <span *ngIf="addUpdateForm.controls.cloud_marketplace.errors?.required"
+                  >Cloud Marketplace is mandatory.
+                </span>
+              </mat-error>
+          </mat-form-field>
+            <div>
+                <button
+                  class="custom-btn-md me-2 btnSubmit add-btn-mag-category"
+                  (click)="addUpdateProduct()"
+                >
+                  Submit
+                </button>
+              </div>
+        </div>
+      </form>
+  </div>
+</div>
+

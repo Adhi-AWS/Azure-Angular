@@ -1,0 +1,14 @@
+<div class="breadcrum">
+  <span>Help/</span>
+  <span class="font-weight-bold"> User Guide</span>
+</div>
+<div class="pagetitle">
+  <span>User Guide</span>
+</div>
+<pdf-viewer
+  src="../assets/docs/HTC_Cloud_Orchestrator.pdf"
+  [render-text]="true"
+  [render-text-mode]="2"
+  [show-borders]="true"
+  (pages-initialized)="pagesInitialized($event)"
+></pdf-viewer>

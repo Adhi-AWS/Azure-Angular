@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-2 mt-3 ms-auto" *ngIf="taskResponse">
+    <button
+      class="custom-btn-md btnCancel add-btn-audit"
+      (click)="openViewJsonDialog('Response')"
+    >
+      View as JSON
+    </button>
+  </div>
+
+  <mat-accordion multi *ngIf="taskResponse?.details?.resources">
+    <mat-expansion-panel
+      *ngFor="let resource of taskResponse.details.resources; let i = index"
+      [expanded]="step === i"
+      (opened)="setStep(i)"
+      (closed)="setStep(step === i ? -1 : step)"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title
+          [ngClass]="{
+            'active-accordion': step === i
+          }"
+        >
+          {{ resource.type }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-shared-keyvalue-table
+        [data]="resource.instances[0].attributes"
+        *ngIf="
+          resource.instances?.length &&
+          (resource.instances[0].attributes | json) !== '{}'
+        "
+      ></app-shared-keyvalue-table>
+      <div
+        class="text-center my-5"
+        *ngIf="
+          !resource.instances?.length ||
+          (resource.instances[0].attributes | json) === '{}'
+        "
+      >
+        <p>No resource created</p>
+      </div>
+
+      <mat-action-row>
+        <button class="btnCancel add-btn-audit" (click)="prevStep()">Previous</button>
+        <button class="btnCancel add-btn-audit" (click)="nextStep()">Next</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

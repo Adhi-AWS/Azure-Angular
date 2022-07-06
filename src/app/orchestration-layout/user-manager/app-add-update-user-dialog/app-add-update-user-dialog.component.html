@@ -1,0 +1,82 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+    {{ data.app_title }} User
+</h2>
+<div mat-dialog-content>
+    <form [formGroup]="addUpdateForm" class="container-fluid my-3">        
+        <div class="row">
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="!(data.app_title === 'Change Password')">
+                <mat-label>User Name</mat-label>
+                <input matInput type="text" formControlName="user_name" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.user_name.errors?.required">User Name is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="!(data.app_title === 'Update' || data.app_title === 'Change Password')">
+                <mat-label>Password</mat-label>
+                <input matInput type="text" formControlName="password" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.password.errors?.required">Password is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>            
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="!(data.app_title === 'Change Password')">
+                <mat-label>First Name</mat-label>
+                <input matInput type="text" formControlName="first_name" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.first_name.errors?.required">First Name is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="!(data.app_title === 'Change Password')">
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" formControlName="last_name" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.last_name.errors?.required">Last Name is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="!(data.app_title === 'Change Password')">
+                <mat-slide-toggle formControlName="is_active">Active</mat-slide-toggle>
+                <input matInput hidden />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.is_active.errors?.required">Active is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- chnage password -->
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="(data.app_title === 'Change Password')">
+                <mat-label>New Password</mat-label>
+                <input matInput type="password" formControlName="new_password_1" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.password.errors?.required">Password is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" *ngIf="(data.app_title === 'Change Password')">
+                <mat-label>Retype New Password</mat-label>
+                <input matInput type="password" formControlName="new_password_2" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.password.errors?.required">Password is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="row customization" *ngIf="(data.app_title === 'Change Password' && ispasswordValid)">Password Does Not Match</div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-dialog-close class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-user">
+        Close
+    </button>
+    <button class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-user" (click)="onReset()">
+        Reset
+    </button>
+    <button  class="custom-btn-md m-0 btnSubmit add-btn-dil-user" (click)="addUpdateUser()">
+        {{ data.app_title }}
+    </button>
+</div>
+<!-- [disabled]="!isValid" -->

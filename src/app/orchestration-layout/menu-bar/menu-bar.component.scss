@@ -1,0 +1,74 @@
+@use 'sass:map';
+@import 'overrides/variable.scss';
+.mat-toolbar {
+  position: sticky;
+  top: 56px;
+  height: 56px;
+  background-color: #fff;
+  box-shadow: none;
+  // width:450px;
+  // border-bottom: 1px solid #c5c9d8;
+  z-index: 999;
+  display: flex;
+  justify-content: space-evenly;
+}
+.menu-link {
+  height: 58px !important;
+  font-family: var(--htc-font-family-exo);
+  font-weight: bold !important;
+  // line-height: 30px !important;
+  font-size: 16px !important;
+  color: #000000;
+
+  border: 1px solid transparent;
+  width: fit-content;
+
+  &:hover {
+    border: 1px solid map.get($mat-color-custom-list, 'neutral-20');
+    background-color: map.get($mat-color-custom-list, 'neutral-10');
+  }
+}
+
+.active-btn {
+  border: 1px solid transparent;
+  border-top: 2px #f7714d solid;
+  background-color: transparent;
+  // color: #976659;
+
+  &:hover {
+    border: 1px solid map.get($mat-color-custom-list, 'neutral-20');
+    border-top: 2px #f7714d solid;
+    background-color: map.get($mat-color-custom-list, 'neutral-10');
+  }
+}
+.highlight{
+  border: 1px solid transparent;
+  border-top: 2px #f7714d solid;
+  background-color: transparent;
+}
+
+.chevron-cls {
+  font-size: 12px !important;
+  color: #214796;
+  transition: all ease 0.3s;
+}
+
+.chevron-active {
+  color: #f7714d;
+}
+
+.chevron-rotate {
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+
+// ::ng-deep .mat-menu-panel {
+//   max-width: none !important;
+//   max-height: none !important;
+// }
+
+.child-menu-layout {
+  line-height: 0;
+  padding-left: 5px;
+  flex-wrap: wrap;
+}

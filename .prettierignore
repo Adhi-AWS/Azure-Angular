@@ -1,0 +1,12 @@
+dist
+node_modules/*
+e2e/*
+package.json
+package-lock.json
+.editorconfig
+.gitignore
+angular.json
+browserlist
+karma.conf.js
+src/test.ts
+src/pollyfills.ts

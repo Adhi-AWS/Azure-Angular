@@ -1,0 +1,94 @@
+@use 'sass:math';
+@import './variable.scss';
+
+@mixin fz-custom-size {
+  // font-size
+  $sizes: 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 25, 26, 28, 30, 48;
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .fz-#{$size} {
+      font-size: #{$size}px !important;
+    }
+  }
+}
+@include fz-custom-size;
+
+@mixin border-radius-custom-size {
+  // border-radius
+  $sizes: 4, 6, 8, 12, 16, 20;
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .brs-#{$size} {
+      border-radius: #{$size}px !important;
+    }
+  }
+}
+@include border-radius-custom-size;
+
+@mixin opacity {
+  // border-radius
+  $sizes: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .op-#{$size} {
+      opacity: math.div($size, 10) !important;
+    }
+  }
+}
+@include opacity;
+
+@mixin color-class-generator($colorMap, $prefix, $propName) {
+  // border-radius
+  @each $color, $colorCode in $colorMap {
+    .#{$prefix}-#{$color} {
+      #{$propName}: #{$colorCode} !important;
+    }
+  }
+}
+@include color-class-generator($mat-color-custom-list, 'text', 'color');
+@include color-class-generator(
+  $mat-color-custom-list,
+  'bg',
+  'background-color'
+);
+
+.text-white {
+  color: #fff;
+}
+
+.fw-light {
+  font-weight: 300 !important;
+}
+.fw-medium {
+  font-weight: 500 !important;
+}
+.fw-bold {
+  font-weight: 700 !important;
+}
+.fw-black {
+  font-weight: 900 !important;
+}
+
+.no-events {
+  pointer-events: none;
+}
+.pointer-events {
+  cursor: pointer;
+}
+.cursor-move {
+  cursor: move;
+}
+.page-heading-container {
+  .page-heading {
+    line-height: 60px;
+    color: #001737;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+  }
+  border-bottom: 1px solid #e7eaf4;
+}
+
+.mat-progress-spinner {
+  display: inline-block !important;
+}

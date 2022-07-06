@@ -1,0 +1,15 @@
+<div class="chart-card m-3">
+  <div class="row-fluid mb-1">
+    <span class="chart-heading fw-medium fz-14 page-title mb-3 text-left">
+      {{ chartTitle }}
+    </span>
+    <span class="dataFrequency">{{frequency}}</span>
+    </div>
+  <div class="chart-content">
+    <div [id]="chartId" *ngIf="chartDataJson?.length"></div>
+    <div class="text-center" *ngIf="!chartDataJson?.length">
+      <p class="mb-1"><img src="/assets/images/no-data-logo.svg" alt="Loading Image" /></p>
+      <p class="fw-medium no-data-text">No Data Available</p>
+    </div>
+  </div>
+</div>

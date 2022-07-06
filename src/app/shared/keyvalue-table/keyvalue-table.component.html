@@ -1,0 +1,25 @@
+<table aria-describedby="content"
+  [ngClass]="{
+    'mt-3': (data | keyvalue)?.length
+  }"
+>
+  <tbody>
+    <tr *ngFor="let prop of data | keyvalue">
+      <th>{{ prop.key }}</th>
+      <td [ngSwitch]="valueCategory(prop.value)">
+        <ng-container *ngSwitchCase="'empty'">
+          <span> - </span>
+        </ng-container>
+        <ng-container *ngSwitchCase="'jsonObj'">
+          <pre> {{ prop.value | json }} </pre>
+        </ng-container>
+        <ng-container *ngSwitchCase="'stringifiedJson'">
+          <pre> {{ parseJson(prop.value) | json: 4 }} </pre>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <span> {{ prop.value }} </span>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,102 @@
+<div id="fullPage">
+  <div id="brandingWrapper" class="float">
+    <div id="branding" class="wallpaperClass"></div>
+  </div>
+  <div id="contentWrapper" class="float">
+    <div id="content">
+      <div id="workArea">
+        <div id="authArea" class="groupMargin">
+          <div id="loginArea">
+            <div class="row">
+
+            </div>
+
+            <form class="login-outer-container clearfix" [formGroup]="loginForm">
+              <div class="login-container align-self-center">
+                <div class="login-inner-container">
+                  <div>
+                    <a class="login-logo" href="javascript:void(0)"><img style="height: 55px;"
+                        src="assets/images/champLogo.png" alt="Loading Image" />
+                    </a>
+                    <h1 class="login-header fw-medium mb-4">Log in to your account</h1>
+                  </div>
+                  <div *ngIf="commonLogin">
+                    <button class="btnSubmit mb-2" (click)="loginActiveDirectory('champ')">CHAMP</button><br>
+                    <button class="btnSubmit mb-2 azureBtn" (click)="loginActiveDirectory('azure')">Microsoft Azure Active Directory</button> <br>
+                    <button class="btnSubmit mb-2 directoryBtn" (click)="loginActiveDirectory('azure')">Active Directory</button> <br>
+                    <button class="btnSubmit googleBtn" (click)="loginActiveDirectory('google')">Google</button> <br>
+                   </div>
+                  <div class="fz-16" *ngIf="isHtcLogin">
+                    <div class="d-block position-relative">
+                      <mat-form-field class="w-100" appearance="standard">
+                        <mat-label>Email ID</mat-label>
+                        <input matInput placeholder="Email ID" formControlName="email_id" type="text" required />
+                        <a *ngIf="loginForm.controls.email_id.value" matSuffix mat-icon-button
+                          class="text-neutral-70 fz-12 input-clear-btn"
+                          (click)="clearControl(loginForm.get('email_id'))">
+                          <span class="clear-icon"></span>
+                        </a>
+                        <mat-error>
+                          <span *ngIf="loginForm.controls.email_id.errors?.required">Email ID is mandatory.
+                          </span>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="d-block mb-2 position-relative">
+                      <mat-form-field class="w-100" appearance="standard">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" placeholder="**********"
+                          [type]="password_hidden ? 'password' : 'text'" required />
+                        <a mat-icon-button matSuffix (click)="togglePasswordHidden()" class="text-neutral-70 fz-12">
+                          <span [ngClass]="{
+                                'view-on': !password_hidden,
+                                'view-off': password_hidden
+                              }"></span>
+                        </a>
+                        <a *ngIf="loginForm.controls.password.value" mat-icon-button matSuffix
+                          class="text-neutral-70 fz-12 input-clear-btn"
+                          (click)="clearControl(loginForm.get('password'))">
+                          <span class="clear-icon"></span>
+                        </a>
+                        <mat-error>
+                          <span *ngIf="loginForm.controls.password.errors?.required">Password is mandatory.
+                          </span>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="d-block pt-2">
+                      <button type="submit" class="w-100 btnSubmit add-btn-login" (click)="login()"
+                        [disabled]="loginForm.invalid">
+                        Login
+                      </button>
+                      <button type="back" class="w-100 btnCancel add-btn-login" (click)="cancel()"
+                        >
+                        Cancel
+                      </button>
+                    </div>
+                    <div id="introduction" class="groupMargin" *ngIf="isHtcLogin">
+                      <a href="#" class="add-margin-left">
+                        Forgot password?<br />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- FOOTER -->
+          </div>
+        </div>
+      </div>
+      <div id="footerPlaceholder"></div>
+    </div>
+    <footer id="footer">
+      <div id="footerLinks" class="floatReverse">
+        <div>
+          <span id="copyright">© 2022 HTC Global Services Inc.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

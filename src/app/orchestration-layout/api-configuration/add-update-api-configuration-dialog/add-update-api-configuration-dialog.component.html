@@ -1,0 +1,167 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ data.config_title }} API Configuration
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.config_title === 'Add'"
+      >
+        <mat-label>Cloud Provider</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          formControlName="cloud_provider"
+          required
+        >
+          <mat-option
+            *ngFor="let cp of cloud_provider_list"
+            [value]="cp.cloud_provider"
+          >
+            {{ cp.screen_name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.cloud_provider.errors?.required"
+            >Cloud Provider is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.config_title === 'Add'"
+      >
+        <mat-label>Task Name</mat-label>
+        <input matInput type="text" formControlName="task_name" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.task_name.errors?.required"
+            >Task Name is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Application Name</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="application_name"
+          required
+        />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.application_name.errors?.required"
+            >Application Name is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Request URL</mat-label>
+        <input matInput type="text" formControlName="request_url" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.request_url.errors?.required"
+            >Request URL is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Callback URL</mat-label>
+        <input matInput type="text" formControlName="callback_url" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.callback_url.errors?.required"
+            >Callback URL is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Method</mat-label>
+        <input matInput type="text" formControlName="method" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.method.errors?.required"
+            >Method is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Headers</mat-label>
+        <textarea matInput formControlName="headers" required></textarea>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.headers.errors?.required"
+            >Headers is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Credentials</mat-label>
+        <input matInput type="text" formControlName="credentials" />
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Request Parameters</mat-label>
+        <textarea
+          matInput
+          formControlName="request_parameters"
+          required
+        ></textarea>
+        <mat-error>
+          <span
+            *ngIf="addUpdateForm.controls.request_parameters.errors?.required"
+            >Request Parameters is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Request Parameters Map</mat-label>
+        <textarea
+          matInput
+          formControlName="request_parameters_map"
+          required
+        ></textarea>
+        <mat-error>
+          <span
+            *ngIf="
+              addUpdateForm.controls.request_parameters_map.errors?.required
+            "
+            >Request Parameters Map is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Response Parameters Map</mat-label>
+        <textarea
+          matInput
+          formControlName="response_parameters_map"
+          required
+        ></textarea>
+        <mat-error>
+          <span
+            *ngIf="
+              addUpdateForm.controls.response_parameters_map.errors?.required
+            "
+            >Response Parameters Map is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel add-btn-api-conf-comp"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 me-3 btnSubmit add-btn-api-conf-comp"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-api-conf-comp"
+    (click)="addUpdateTaskConfiguration()"
+    [disabled]="!isValid"
+  >
+    {{ data.config_title }}
+  </button>
+</div>

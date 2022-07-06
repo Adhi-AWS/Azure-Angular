@@ -1,0 +1,82 @@
+<div class="row-fluid breadcrum">
+  <span>Orchestration/</span>
+  <span class="font-weight-bold"> user profile</span>
+</div>
+<div>
+  <span class="pageHeading"> User profile</span>
+</div>
+<div class="row mt-4 m-0">
+  <div class="col-md-2 side-menu" mode="side" opened>
+    <div class="userHeading"><h3 class="font-weight-bold">{{userName}}</h3></div>
+    <div *ngFor="let item of profileMenu; let i = index">
+      <a
+        mat-button
+        [ngClass]="selectedIndex === i ? 'highlight': 'disabled' "
+        (click)="selectMenu(item, i)"
+      >
+      <img *ngIf="selectedIndex === i" src="assets/images/icons/rectangle.svg" alt="" />
+        {{ item.name }}
+      </a>
+    </div>
+  </div>
+  <div class="col-md-10 main-menu">
+    <div class="content row">
+      <div class="col-md-6">
+      <form *ngIf="profileMode" [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <h2>Update Profile</h2>
+        <!-- Name -->
+        <mat-form-field class="form-field" *ngIf="isChamplogin">
+          <input matInput placeholder="First Name" formControlName="first_name" />
+          <mat-error *ngIf="errorHandling('first_name', 'required')">
+            You must provide a First Name.
+         </mat-error>
+        </mat-form-field>
+        <!-- Name -->
+        <mat-form-field class="form-field" *ngIf="isChamplogin">
+          <input matInput placeholder="Last Name" formControlName="last_name" />
+          <mat-error *ngIf="errorHandling('last_name', 'required')">
+            You must provide a Last Name.
+         </mat-error>
+        </mat-form-field>
+        <!-- userName -->
+        <mat-form-field class="form-field disable">
+          <mat-label>Email / UserName</mat-label>
+          <input matInput placeholder="User Name" formControlName="email" />
+          <mat-error *ngIf="errorHandling('email', 'required')">
+            You must provide a User Name.
+         </mat-error>
+        </mat-form-field>
+       
+        <!-- Submit -->
+        <div class="button-wrapper mt-2">
+          <button mat-flat-button class="btnSubmit"  [ngClass]="isChamplogin ? '' : 'disableBtn'">Submit</button>
+        </div>
+      </form>
+      <form *ngIf="passordResetMode && isChamplogin" [formGroup]="passwordResetForm" (ngSubmit)="submitResetForm()">
+        <!-- password -->
+        <h2>Reset password</h2>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="New Password" type="password" formControlName="password" />
+          <mat-error *ngIf="errorHandling('password', 'required')">
+            You must provide a New Password.
+         </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Retype New Password" type="password" formControlName="password1" />
+          <mat-error *ngIf="errorHandling('password1', 'required')">
+            You must provide a Retype New Password.
+         </mat-error>
+        </mat-form-field>
+        <div class="add-color" *ngIf="!ispassMatch"> Password Mismatch</div>
+        <!-- Submit -->
+        <div class="button-wrapper mt-2">
+          <button mat-flat-button class="btnSubmit">Submit</button>
+        </div>
+      </form>
+      <div *ngIf="passordResetMode && !isChamplogin">
+        To reset password kindly contact respective login identity.
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

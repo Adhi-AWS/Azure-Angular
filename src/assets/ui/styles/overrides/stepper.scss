@@ -1,0 +1,62 @@
+// Auth-lib/create-account/mat-stepper
+
+$line-top-create-account: 19px;
+.create-account {
+  .mat-horizontal-content-container {
+    padding: 0;
+  }
+  .mat-horizontal-stepper-header-container {
+    .mat-horizontal-stepper-header {
+      padding: 7px 4px;
+
+      .mat-step-text-label {
+        font-size: 12px;
+      }
+
+      .mat-step-label {
+        padding-top: 8px !important;
+      }
+      .mat-step-icon {
+        background-color: #fff !important;
+        color: #999;
+        border: 1px solid #767b87;
+      }
+
+      .mat-step-icon-selected,
+      .mat-step-icon-state-done,
+      .mat-step-icon-state-edit {
+        background-color: #767b87 !important;
+        color: white;
+      }
+
+      &::after {
+        top: $line-top-create-account;
+      }
+      &::before {
+        top: $line-top-create-account;
+      }
+    }
+
+    .mat-stepper-horizontal-line {
+      top: $line-top-create-account;
+    }
+  }
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+.mat-horizontal-stepper-header-container {
+  pointer-events: none !important;
+}
+
+.registration-complete {
+  .mat-horizontal-stepper-header-container {
+    display: none;
+  }
+}

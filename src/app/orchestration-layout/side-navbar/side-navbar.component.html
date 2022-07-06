@@ -1,0 +1,14 @@
+<mat-nav-list
+  class="orch-sidebar-list"
+  [ngClass]="{
+    overflowAuto: getSideNavState() === 2,
+    overflowVisible: getSideNavState() !== 2
+  }"
+>
+  <app-side-nav-list-item
+    class="orch-side-nav-list-item"
+    *ngFor="let item of navItems"
+    [item]="item"
+    [stage]="stage"
+  ></app-side-nav-list-item>
+</mat-nav-list>

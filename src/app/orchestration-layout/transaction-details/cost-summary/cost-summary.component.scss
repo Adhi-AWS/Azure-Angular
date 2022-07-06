@@ -1,0 +1,164 @@
+.mat-accordion {
+  margin: 2rem 0;
+}
+
+.mat-expansion-panel {
+  background-color: #f4f7fc;
+}
+
+.mat-expansion-panel-header-title {
+  font-weight: 500;
+}
+
+.active-accordion {
+  color: #f7714d;
+}
+
+.add-btn-audit{
+  margin-left: 32%;
+  height: 40px !important;
+}
+
+table {
+  border: 1px solid #6b7280;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}
+
+td.name {
+  max-width: 32rem;
+}
+
+td.monthly-quantity, td.price, td.hourly-cost, td.monthly-cost {
+  text-align: right;
+}
+
+tr.group {
+  background-color: #e0e7ff;
+}
+
+tr.resource {
+  background-color: #e5e7eb;
+}
+
+tr.resource.top-level {
+  background-color: #6b7280;
+  color: #ffffff;
+  opacity: .7;
+}
+
+tr.tags {
+  background-color: #6b7280;
+  color: #ffffff;
+  font-size: 0.75rem;
+  opacity: .7;
+}
+
+tr.tags td {
+  padding-top: 0;
+}
+
+tr.total {
+  background-color: #6b7280;
+  color: white;
+  font-weight: bold;
+}
+
+table.overall-total tr.total {
+  background-color: #479AD5;
+  font-weight: bold;
+}
+
+table.overall-total tr.total td {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border: none;
+}
+
+.arrow {
+  color: #96a0b5;
+}
+
+.usage-cost {
+  color: #6b7280;
+}
+
+// @media screen and (max-width: 1024px) {
+//   table.breakdown, table.overall-total {
+//     min-width: auto;
+//   }
+// }
+table.breakdown, table.overall-total {
+  width: 100%;
+}
+.cost-table {
+  overflow-x: scroll;
+}
+
+table.overall-total {
+  border: none;
+  margin-top: 1rem;
+}
+
+a {
+  color: #3b82f6;
+}
+
+.metadata {
+  margin-bottom: 1.5rem;
+}
+
+.metadata ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.metadata ul li {
+  margin-bottom: 0.5rem;
+}
+
+.metadata .label {
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  width: 8rem;
+}
+.btnCancel{
+  float: right;
+}
+.font-bold{
+  font-weight: bold;
+}
+.borderRow{
+  border: 1px solid black;
+  background-color: #524E9C;
+  color: white;
+  padding: 10px;
+}
+.costInvalidText{
+  text-align: center;
+}
+.float-right{
+  float: right;
+}
+
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.add-mat-accordion-prop{
+  border: 1px solid black;
+  background-color: #524E9C;
+  color: white;
+  // padding: 10px;
+  width: 160%;
+}
+
+.add-width{
+  width: 100% !important;
+  color: white;
+}

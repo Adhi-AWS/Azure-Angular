@@ -1,0 +1,47 @@
+@use 'sass:map';
+@import './variable.scss';
+
+.custom-btn-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: map.get($mat-color-custom-list, 'secondary-90') !important;
+}
+
+.custom-btn-md {
+  height: 32px !important;
+  line-height: 30px !important;
+  font-size: 14px !important;
+  border-radius: 6px !important;
+  &.mat-flat-button.mat-accent {
+    color: #fff !important;
+  }
+  &.mat-stroked-button.mat-accent {
+    color: map.get($mat-color-custom-list, 'secondary-90') !important;
+    border-color: map.get($mat-color-custom-list, 'secondary-90') !important;
+  }
+  &.mat-stroked-button.mat-accent.mat-button-disabled {
+    opacity: 0.6;
+  }
+}
+
+.custom-btn-lg {
+  height: 40px !important;
+  line-height: 38px !important;
+  font-size: 14px !important;
+  border-radius: 8px !important;
+
+  &.mat-flat-button.mat-accent {
+    color: #fff !important;
+  }
+  &.mat-stroked-button.mat-accent {
+    color: map.get($mat-color-custom-list, 'secondary-90') !important;
+    border-color: map.get($mat-color-custom-list, 'secondary-90') !important;
+  }
+}
+
+.active-tick {
+  color: map.get($mat-color-custom-list, 'primary-100') !important;
+  &::after {
+    content: '✓';
+  }
+}

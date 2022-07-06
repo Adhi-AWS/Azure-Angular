@@ -1,0 +1,9 @@
+version: "3"
+services:
+  champ-webui:
+    image: ${REGISTRY:-ganeshpote1988}/champ:champ-webui-${TAG:-latest}
+    ports:
+      - "4200:4200"
+    build:
+      context: .
+      dockerfile: jenkins.Dockerfile

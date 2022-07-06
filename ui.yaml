@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-orchestrator
+  namespace: htc-champ-cloudorch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ui-orchestrator
+  template:
+    metadata:
+      labels:
+        app: ui-orchestrator
+    spec:
+      containers:
+        - name: ui-orchestrator
+          image: nexuscoe.htcinc.com:5115/cloudorch/ui-orchestrator:BuildId
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: tz-config
+              mountPath: /etc/localtime
+      volumes:
+        - name: tz-config
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Kolkata
+      imagePullSecrets:
+        - name: nexus-registry-cred

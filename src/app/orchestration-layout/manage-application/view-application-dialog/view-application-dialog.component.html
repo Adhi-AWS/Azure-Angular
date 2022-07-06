@@ -1,0 +1,16 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  Application ID: {{ data.id }}
+</h2>
+<div mat-dialog-content>
+  <app-shared-keyvalue-table [data]="data"></app-shared-keyvalue-table>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-stroked-button
+    mat-dialog-close
+    color="accent"
+    class="custom-btn-md ms-auto me-3"
+  >
+    Close
+  </button>
+</div>

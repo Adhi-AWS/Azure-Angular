@@ -1,0 +1,76 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ data.config_title }} Task Configuration
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.config_title === 'Add'"
+      >
+        <mat-label>Cloud Provider</mat-label>
+        <mat-select
+          placeholder="Please Select"
+          formControlName="cloud_provider"
+          required
+        >
+          <mat-option
+            *ngFor="let cp of cloud_provider_list"
+            [value]="cp.cloud_provider"
+          >
+            {{ cp.screen_name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.cloud_provider.errors?.required"
+            >Cloud Provider is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="w-100 mb-3"
+        appearance="standard"
+        *ngIf="data.config_title === 'Add'"
+      >
+        <mat-label>Task Name</mat-label>
+        <input matInput type="text" formControlName="task_name" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.task_name.errors?.required"
+            >Task Name is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Default Configuration</mat-label>
+        <textarea matInput formControlName="default_values" required></textarea>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.default_values.errors?.required"
+            >Default Configuration is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+  mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel add-btn-update-task"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 me-3 btnCancel add-btn-update-task"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-update-task"
+    (click)="addUpdateTaskConfiguration()"
+    [disabled]="!isValid"
+  >
+    {{ data.config_title }}
+  </button>
+</div>

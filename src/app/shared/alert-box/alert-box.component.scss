@@ -1,0 +1,111 @@
+@use "sass:map";
+@import "./variable.scss";
+
+//map.get($mat-color-custom-list, 'neutral-20') !important;
+
+.alert-box {
+  background-color: map.get($mat-color-custom-list, "neutral-20");
+  display: block;
+  padding: 8px;
+  border-radius: 3px;
+  position: relative;
+  line-height: 1.5;
+  font-size: 14px;
+
+  & + & {
+    margin-top: 2em;
+  }
+
+  &:before {
+    color: white;
+    width: 1.5em;
+    height: 1.5em;
+    position: absolute;
+    top: 1em;
+    left: -3px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  p {
+    margin: 0 0 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .input-clear-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.alert-box.alert-error {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+.alert-box.alert-warning {
+  border-color: #ffecb5;
+  background: #fff3cd;
+  color: #664d03;
+  &:before {
+    background-color: map.get($mat-color-custom-list, "warning-100") !important;
+    content: "!";
+  }
+}
+
+.alert-box.alert-info {
+  color: #055160;
+  background-color: #cff4fc;
+  border-color: #b6effb;
+  &:before {
+    background-color: map.get($mat-color-custom-list, "info-100") !important;
+    content: "!";
+  }
+}
+
+.alert-box.alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+  &:before {
+    background-color: darkolivegreen;
+    content: "✔";
+  }
+}
+
+.hide {
+  -moz-animation: cssAnimation 0.25s ease-in 5s forwards;
+  /* Firefox */
+  -webkit-animation: cssAnimation 0.25s ease-in 5s forwards;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 0.25s ease-in 5s forwards;
+  /* Opera */
+  animation: cssAnimation 0.25s ease-in 5s forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+@-webkit-keyframes cssAnimation {
+  to {
+    width: 0;
+    height: 0;
+    padding: 0;
+    display: none;
+  }
+}

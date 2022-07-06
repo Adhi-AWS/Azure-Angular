@@ -1,0 +1,12 @@
+{
+  "*/customer-svc*": {
+    "target": "https://dev.hcmp.htcinc.com/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "*/siteadmin-auth-svc*": {
+    "target": "http://dev.hcmpadmin.htcin.com/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

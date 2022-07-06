@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="title-div mt-3">
+    <div class="col-md-11">
+      <h2 class="page-title fw-medium">Product Catalogue Details</h2>
+    </div>
+    <div class="col-md-1 btn-div">
+      <button
+        class="custom-btn-md mx-2 btnCancel add-btn-product-cat"
+        [routerLink]="['/orchestration/product-catalogue']"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="title-div mt-2">
+    <div
+      [ngClass]="{
+        'col-md-10': productCatalogueDetails,
+        'col-md-11': !productCatalogueDetails
+      }"
+    >
+      <h2 class="fw-medium">{{ cloud_provider }} -> {{ task_name }}</h2>
+    </div>
+    <div *ngIf="adminFlag" class="col-md-1 btn-div">
+      <button
+        class="custom-btn-md mx-2 btnSubmit add-update-btn-product-cat"
+        (click)="onTestPayloadClick()"
+      >
+        {{ productCatalogueDetails ? 'Update' : 'Add' }} Test Payload
+      </button>
+    </div>
+    <div *ngIf="adminFlag && productCatalogueDetails" class="col-md-1 btn-div">
+      <button
+        *ngIf="productCatalogueDetails"
+        class="custom-btn-md mx-2 btnSubmit add-btn-product-cat"
+        (click)="onDeployClick()"
+      >
+        Deploy
+      </button>
+    </div>
+  </div>
+
+  <div class="row text-center my-5" *ngIf="!productCatalogueDetails">
+    <p>
+      No Test Payload configured for this task. Please use the "Add Test
+      Payload" button to add the same.
+    </p>
+  </div>
+
+  <div
+    class="row"
+    *ngIf="
+      productCatalogueDetails && (productCatalogueDetails | keyvalue)?.length
+    "
+  >
+    <div class="description-cls">
+      <mat-accordion>
+        <mat-expansion-panel class="mt-3">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="fw-bolder"> Description </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="row">
+            <pre [innerHtml]="productCatalogueDetails.description || '-'"></pre>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="json-editor-cls my-4" #productCatalogueJsonEditor></div>
+  </div>
+</div>

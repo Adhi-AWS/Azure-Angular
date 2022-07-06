@@ -1,0 +1,36 @@
+<div class="breadcrum">
+    <span>Configuration/</span>
+    <span class="font-weight-bold"> Manage Category</span>
+  </div>
+  <div class="pagetitle">
+    <span>Manage Category</span>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="mt-3 ms-auto add-btn-div">
+        <button
+          class="custom-btn-md me-2 btnSubmit add-btn-mag-category"
+          (click)="onAddClick()"
+        >
+          Add Category
+        </button>
+      </div>
+      <app-shared-table
+        *ngIf="manageCategoryData"
+        [columns]="manageCategoryColumns"
+        [data]="manageCategoryData"
+        [isFilter]="true"
+        [isPagination]="false"
+        (editAction)="onEditClick($event)"
+        (deleteAction)="onDeleteClick($event)"
+      ></app-shared-table>
+      <mat-paginator
+      #paginator
+      [pageSizeOptions]="[10, 25, 100]"
+      showFirstLastButtons
+      (page)="onPageEvent($event)"
+    >
+    </mat-paginator>
+    </div>
+  </div>
+  

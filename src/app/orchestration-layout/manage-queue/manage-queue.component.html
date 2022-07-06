@@ -1,0 +1,36 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> Manage Queue</span>
+</div>
+<div class="pagetitle">
+  <span>Manage Queue</span>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="mt-3 ms-auto add-btn-div">
+      <button
+        class="custom-btn-md me-2 btnSubmit add-btn-queue"
+        (click)="onAddClick()"
+      >
+        Add Queue
+      </button>
+    </div>
+    <app-shared-table
+      *ngIf="manageQueueData"
+      [columns]="manageQueueColumns"
+      [data]="manageQueueData"
+      [isFilter]="false"
+      [isPagination]="false"
+      (editAction)="onEditClick($event)"
+      (deleteAction)="onDeleteClick($event)"
+      (mapAdapter)="onMapAdapterClick($event)"
+    ></app-shared-table>
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+      (page)="onPageEvent($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

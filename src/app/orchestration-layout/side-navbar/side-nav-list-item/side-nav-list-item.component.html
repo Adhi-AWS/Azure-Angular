@@ -1,0 +1,65 @@
+<a
+  mat-list-item
+  [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
+  (click)="onItemSelected(item)"
+  [ngClass]="{
+    active: expanded,
+    expanded: expanded
+  }"
+  class="menu-list-item submenu-lvl-{{ depth + 1 }} icon-div"
+>
+  <div mat-list-item-content class="mat-list-item-content pe-0">
+    <span class="icon-container" *ngIf="depth === 0 && item?.mfIconPath">
+      <div *ngIf="hidden; else withOutMenu">
+        <mat-icon
+          class="normal-icon {{ item.mfIconPath }}"
+          [svgIcon]="item.mfIconPath"
+        ></mat-icon>
+        <mat-icon
+          class="active-icon {{ item.mfIconPath }}"
+          [svgIcon]="item.mfIconPath + '_active'"
+        ></mat-icon>
+        <div class="menu-child">
+          <span class="icon-menu">
+            <p
+              class="icon-menu-item menu-header"
+              (click)="toolTipMenuClicked(item)"
+            >
+              {{ item.mfName }}
+            </p>
+            <p
+              class="icon-menu-item"
+              *ngFor="let child of item.children"
+              (click)="toolTipMenuClicked(child)"
+            >
+              {{ child.mfName }}
+            </p>
+          </span>
+        </div>
+      </div>
+      <ng-template #withOutMenu>
+        <mat-icon class="normal-icon" [svgIcon]="item.mfIconPath"></mat-icon>
+        <mat-icon
+          class="active-icon"
+          [svgIcon]="item.mfIconPath + '_active'"
+        ></mat-icon>
+      </ng-template>
+    </span>
+    <span mat-list-text *ngIf="!hidden">{{ item.mfName }}</span>
+    <span
+      [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"
+      class="chevron-arrow"
+      *ngIf="item.children && item.children.length && !hidden"
+    >
+      <mat-icon svgIcon="chevron_left"></mat-icon>
+    </span>
+  </div>
+</a>
+<div *ngIf="expanded && !hidden">
+  <app-side-nav-list-item
+    *ngFor="let child of item.children"
+    [item]="child"
+    [depth]="depth + 1"
+  >
+  </app-side-nav-list-item>
+</div>

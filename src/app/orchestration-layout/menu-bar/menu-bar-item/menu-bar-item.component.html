@@ -1,0 +1,76 @@
+<!-- <a
+  *ngIf="!item?.children?.length"
+  mat-menu-item
+  class="px-1 fw-medium menu-link text-center"
+  [ngClass]="{
+    'active-btn': active
+  }"
+  (click)="onMenuItemClick(item)"
+> -->
+  <!-- <mat-icon
+    *ngIf="item?.mfIconPath"
+    class="me-2"
+    [svgIcon]="active ? item.mfIconPath + '_active' : item.mfIconPath"
+  ></mat-icon> -->
+  <!-- {{ item.mfName }}
+</a>
+
+<a
+  *ngIf="item?.children?.length"
+  mat-menu-item
+  #menuTrigger="matMenuTrigger"
+  [matMenuTriggerFor]="menu"
+  class="px-1 fw-medium menu-link"
+  [ngClass]="{
+    'active-btn': active
+  }"
+  (click)="onMenuItemClick(item)"
+> -->
+  <!-- <mat-icon
+    *ngIf="item?.mfIconPath"
+    class="me-2"
+    [svgIcon]="active ? item.mfIconPath + '_active' : item.mfIconPath"
+  ></mat-icon> -->
+  <!-- {{ item.mfName }}
+  <span class="chevron-arrow">
+    <mat-icon
+      svgIcon="chevron_left"
+      class="chevron-cls m-0"
+      [ngClass]="{
+        'chevron-active': active,
+        'chevron-rotate': menuTrigger.menuOpen
+      }"
+    ></mat-icon>
+  </span>
+</a> -->
+<!-- <mat-menu #menu="matMenu">
+  <div class="child-menu-layout">
+    <app-menu-bar-item
+      class="col-md-2 mx-3"
+      *ngFor="let child of item.children"
+      [item]="child"
+      [depth]="depth + 1"
+    >
+    </app-menu-bar-item>
+  </div>
+</mat-menu> -->
+
+<mat-menu #childMenu="matMenu" [overlapTrigger]="false">
+  <span *ngFor="let child of item">
+    <!-- Handle branch node menu items -->
+    <span *ngIf="child.subcategories && child.subcategories.length > 0">
+      <button  (click)="onMenuItemClick(category,child)" mat-menu-item color="primary" [matMenuTriggerFor]="menu.childMenu">
+        <!-- <mat-icon>{{child.iconName}}</mat-icon> -->
+        <span class="mfUrlLink">{{child.screen_name}}</span>
+      </button>
+      <app-menu-bar-item #menu [item]="child.subcategories" [category]="child"></app-menu-bar-item>
+    </span>
+    <!-- Handle leaf node menu items -->
+    <span *ngIf="!child.subcategories || child.subcategories.length === 0">
+      <button (click)="onMenuItemClick(category,child)" mat-menu-item [routerLink]="child.mfUrlLink">
+        <!-- <mat-icon>{{child.iconName}}</mat-icon> -->
+        <span class="mfUrlLink">{{child.screen_name}}</span>
+      </button>
+    </span>
+  </span>
+</mat-menu>

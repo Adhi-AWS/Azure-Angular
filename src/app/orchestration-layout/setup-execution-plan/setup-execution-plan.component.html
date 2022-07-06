@@ -1,0 +1,95 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> Setup Execution Plan</span>
+</div>
+<div class="pagetitle">
+  <span>Setup Execution Plan</span>
+</div>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-2">
+      <mat-label>Cloud Provider</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="cloud_provider"
+        (selectionChange)="getTaskNameList()"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="cp_input"
+          (ngModelChange)="onSearch('cloud_provider')"
+        />
+        <mat-option
+          *ngFor="let cp of filtered_cloud_provider_list"
+          [value]="cp.cloud_provider"
+        >
+          {{ cp.screen_name }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-3">
+      <mat-label>Task Name</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="task_name"
+        (closed)="dropDownClosed()"
+        [disabled]="!cloud_provider"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="tn_input"
+          (ngModelChange)="onSearch('task_name')"
+        />
+        <mat-option *ngFor="let tn of filtered_task_name_list" [value]="tn">
+          {{ tn }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2 mt-3 fetch-btn-div">
+      <button
+        class="custom-btn-md me-2 btnCancel add-btn-exe"
+        (click)="fetchData()"
+        [disabled]="!cloud_provider || !task_name"
+      >
+        Fetch
+      </button>
+    </div>
+    <div class="col-md-1 mt-3 ms-auto add-btn-div ">
+      <button
+        *ngIf="showClonePlan"
+        class="custom-btn-md me-2 btnCancel add-btn-exe-sub"
+        (click)="onClonePlanClick()"
+      >
+        Clone Plan
+      </button>
+    </div>
+    <div class="col-md-1 mt-3 ms-5 add-btn-div">
+      <button
+        class="custom-btn-md me-2 btnSubmit add-btn-exe-sub"
+        (click)="onAddClick()"
+      >
+        Add New Plan
+      </button>
+    </div>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Plan">
+      <app-automation-plan
+        (refreshSetupExecution)="refreshData($event)"
+        (clonedPlanDetails)="onClonePlanSuccess($event)"
+      ></app-automation-plan>
+    </mat-tab>
+    <mat-tab label="Automation Code">
+      <app-automation-code
+        (refreshSetupExecution)="refreshData($event)"
+      ></app-automation-code>
+    </mat-tab>
+  </mat-tab-group>
+</div>

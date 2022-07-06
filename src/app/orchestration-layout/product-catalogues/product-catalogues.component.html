@@ -1,0 +1,59 @@
+<div class="breadcrum">
+  <span>Products/</span>
+  <span class="font-weight-bold"> Product Catalogue API</span>
+</div>
+<div class="pagetitle">
+  <span>Product Catalogue API</span>
+</div>
+<div class="container-fluid">
+  <div class="title-div mt-3">
+    <h2 class="page-title fw-medium">
+      Total Automation Count: {{ totalAutomationCount }}
+    </h2>
+  </div>
+
+  <div class="col-md-12" *ngIf="productCatalogueData">
+    <div class="search-box">
+      <span class="search-btn"><span class="search-icon"></span></span>
+      <input
+        class="search-txt"
+        type="text"
+        name="taskSearch"
+        placeholder="Type to search"
+        (keyup)="applyFilter($event)"
+      />
+    </div>
+  </div>
+
+  <div
+    class="row text-center my-5"
+    *ngIf="productCatalogueData && !(productCatalogueData | keyvalue)?.length"
+  >
+    <p>No Product Catalogue available</p>
+  </div>
+
+  <div
+    class="row mt-4"
+    *ngIf="productCatalogueData && (productCatalogueData | keyvalue)?.length"
+  >
+    <div
+      class="row mb-4"
+      *ngFor="let product of filteredProductCatalogueData | keyvalue"
+    >
+      <h3 class="m-0 fw-bold">
+        <span class="text-decoration-underline">{{ product.key || 'NA' }}</span>
+        ({{ product.value.length }})
+      </h3>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let item of product.value">
+          <a
+            href="javascript:void(0)"
+            (click)="onTaskNameClick(product.key || 'NA', item)"
+          >
+            {{ item }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

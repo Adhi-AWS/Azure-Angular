@@ -1,0 +1,17 @@
+<div class="row">
+  <div
+    class="col-md-2 mt-3 ms-auto"
+    *ngIf="(requestDetails | keyvalue)?.length"
+  >
+    <button
+      class="custom-btn-md btnCancel add-btn-audit"
+      (click)="openViewJsonDialog('Request')"
+    >
+      View as JSON
+    </button>
+  </div>
+  <app-shared-keyvalue-table
+    [data]="requestDetails"
+    *ngIf="(requestDetails | keyvalue)?.length"
+  ></app-shared-keyvalue-table>
+</div>

@@ -1,0 +1,16 @@
+<div class="error-page-container">
+  <div class="align-self-center error-msg text-center">
+    <h2 class="error-heading">{{ errorObj.heading }}</h2>
+    <p class="error-msg">{{ errorObj.msg }}</p>
+    <div>
+      <a
+        *ngIf="errorObj.btnText"
+        mat-raised-button
+        class="btnSubmit"
+        [routerLink]="errorObj.redirectURL"
+        href="javascript:void(0)"
+        >{{ errorObj.btnText }}</a
+      >
+    </div>
+  </div>
+</div>

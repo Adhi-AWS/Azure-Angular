@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+  champ-webui:
+    image: ${REGISTRY:-ganeshpote1988}/champ:champ-webui-${TAG:-latest}
+    container_name: champ-webui
+    restart: unless-stopped
+    ports:
+      - "4200:4200"

@@ -1,0 +1,46 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+    {{ data.app_title }} Report
+</h2> 
+<div mat-dialog-content>
+    <form [formGroup]="addUpdateForm" class="container-fluid my-3">        
+        <div class="row">
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Report Name</mat-label>
+                <input matInput type="text" formControlName="name" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.name.errors?.required">name is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="description" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.description.errors?.required">Description is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>            
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Report Url</mat-label>
+                <input matInput type="text" formControlName="report_url" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.report_url.errors?.required">Report Url is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>            
+        
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-dialog-close class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-user">
+        Close
+    </button>
+    <button class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-user" (click)="onReset()">
+        Reset
+    </button>
+    <button  class="custom-btn-md m-0 btnSubmit add-btn-dil-user" (click)="addUpdateReport()">
+        {{ data.app_title }}
+    </button>
+</div>
+<!-- [disabled]="!isValid" -->

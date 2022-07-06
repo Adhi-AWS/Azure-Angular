@@ -1,0 +1,83 @@
+<div class="breadcrum">
+    <span>Configuration/</span>
+    <span class="font-weight-bold"> Manage Sub Category</span>
+  </div>
+  <div class="pagetitle">
+    <span>Manage Sub Category</span>
+  </div>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-2">
+      <mat-label>Cloud Provider</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="cloud_provider"
+        (selectionChange)="getCategoryList()"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="cp_input"
+          (ngModelChange)="onSearch('cloud_provider')"
+        />
+        <mat-option
+          *ngFor="let cp of filtered_cloud_provider_list"
+          [value]="cp"
+        >
+          {{ cp | titlecase }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-3">
+      <mat-label>Category</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="category"
+        (closed)="dropDownClosed()"
+        (selectionChange)="getSubCategoryData()"
+        [disabled]="!cloud_provider"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="tn_input"
+          (ngModelChange)="onSearch('category')"
+        />
+        <mat-option *ngFor="let category of filtered_category_list" [value]="category">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mt-3 ms-auto add-btn-div">
+      <button
+        [ngClass] = "category_list.length === 0 ? 'disabled' : ''"
+        class="custom-btn-md me-2 btnSubmit add-btn-mag-sub-category"
+        (click)="onAddClick()"
+      >
+        Add Sub Category
+      </button>
+    </div>
+    <app-shared-table
+      [columns]="manageSubCategoryColumns"
+      [data]="manageSubCategoryData"
+      [isFilter]="true"
+      [isPagination]="false"
+      (editAction)="onEditClick($event)"
+      (deleteAction)="onDeleteClick($event)"
+    ></app-shared-table>
+    <mat-paginator
+    #subCategorypaginator
+    [pageSizeOptions]="[10, 25, 100]"
+    showFirstLastButtons
+    (page)="onPageEvent($event)"
+  >
+  </mat-paginator>
+  </div>
+</div>

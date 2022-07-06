@@ -1,0 +1,158 @@
+.snackbar-overlay {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-transition: 0.5s;
+  overflow: auto;
+  transition: all 0.3s linear;
+}
+
+.snackbar {
+  width: 50%;
+  top: 30%;
+  padding: 0;
+  position: fixed;
+  z-index: 10000;
+  left: 26%;
+  transition: all 0.5s linear;
+
+  display: block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  min-height: inherit;
+  max-height: inherit;
+
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.loader-snackbar {
+  top: 30%;
+  padding: 20px 30px 10px;
+  position: fixed;
+  z-index: 10000;
+  transition: all 0.5s linear;
+  display: block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+  min-height: inherit;
+  max-height: inherit;
+  color: #d51900;
+  width: 100%;
+  text-align: center;
+  // box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+}
+
+.message {
+  text-align: center;
+  font-size: 28px;
+}
+
+.text-medium {
+  font-size: medium !important;
+}
+
+.text-small {
+  font-size: small !important;
+}
+
+.spinnerAlignment {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin: 30px 0;
+}
+
+.text-x-larger {
+  font-size: x-large !important;
+}
+
+.text-bold {
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mat-dialog-title {
+  margin: 0 !important;
+  padding: 10px 40px !important;
+  font-size: 24px;
+}
+
+.successTitleCls {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.failureTitleCls {
+  background-color: #d9534f;
+  color: white;
+}
+
+.normalTitleCls {
+  background-color: whitesmoke;
+  color: #000000;
+}
+
+.mat-dialog-content {
+  padding: 20px 30px 10px !important;
+  margin: 0 !important;
+
+  .statusContent {
+    text-align: center;
+    font-size: 28px;
+
+    .message {
+      margin-bottom: 10px;
+    }
+  }
+
+  span {
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+.mat-dialog-actions {
+  float: right;
+  margin: 0 !important;
+  padding: 0 0 10px !important;
+
+  button {
+    margin: 0 0 0 20px !important;
+  }
+}
+
+.message-list {
+  text-align: center;
+  font-size: 20px;
+}
+
+.float-right {
+  float: right;
+}

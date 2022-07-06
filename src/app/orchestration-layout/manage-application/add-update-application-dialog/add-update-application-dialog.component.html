@@ -1,0 +1,102 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+  {{ data.app_title }} Application
+</h2>
+<div mat-dialog-content>
+  <form [formGroup]="addUpdateForm" class="container-fluid my-3">
+    <div class="row">
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Source</mat-label>
+        <input matInput type="text" formControlName="source" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.source.errors?.required"
+            >Source is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" formControlName="description" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.description.errors?.required"
+            >Description is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Encryption Key</mat-label>
+        <input matInput type="text" formControlName="encryption_key" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.encryption_key.errors?.required"
+            >Encryption Key is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Encryption IV</mat-label>
+        <input matInput type="text" formControlName="encryption_iv" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.encryption_iv.errors?.required"
+            >Encryption IV is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-slide-toggle formControlName="is_active">Active</mat-slide-toggle>
+        <input matInput hidden />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.is_active.errors?.required"
+            >Active is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Secret Key</mat-label>
+        <input matInput type="number" formControlName="secret_key" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.secret_key.errors?.required"
+            >Secret Key is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Access Key</mat-label>
+        <input matInput type="text" formControlName="access_key" required />
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.access_key.errors?.required"
+            >Access Key is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100 mb-3" appearance="standard">
+        <mat-label>Channel</mat-label>
+        <textarea matInput formControlName="channel" required></textarea>
+        <mat-error>
+          <span *ngIf="addUpdateForm.controls.channel.errors?.required"
+            >Channel is mandatory.
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+  mat-dialog-close
+    class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-comp"
+  >
+    Close
+  </button>
+  <button
+    class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-comp"
+    (click)="onReset()"
+  >
+    Reset
+  </button>
+  <button
+    class="custom-btn-md m-0 btnSubmit add-btn-dil-comp"
+    (click)="addUpdateApplication()"
+    [disabled]="!isValid"
+  >
+    {{ data.app_title }}
+  </button>
+</div>

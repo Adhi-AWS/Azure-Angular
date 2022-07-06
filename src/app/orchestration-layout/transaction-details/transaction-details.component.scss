@@ -1,0 +1,48 @@
+.title-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-div {
+  margin-left: auto;
+
+  button {
+    float: right;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+th,
+td {
+  white-space: normal;
+  word-wrap: break-word;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 12px;
+  border: 1px solid rgb(224 224 224);
+}
+
+.ellipsis-icon {
+  color: #1a0dab;
+  font-size: 15px;
+}
+
+.ellipsis-icon:hover {
+  text-decoration: underline;
+}
+.pagetitle{
+  margin-left: 36px;
+}
+.alignIcon{
+vertical-align: text-top;
+margin-left: 24px;
+margin-right: 10px;
+}
+.float-right{
+  float: right;
+}

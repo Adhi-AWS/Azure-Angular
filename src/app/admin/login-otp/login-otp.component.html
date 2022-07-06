@@ -1,0 +1,126 @@
+<div class="login-outer-container clearfix">
+  <div class="login-container align-self-center">
+    <div class="login-inner-container">
+      <div class="text-center">
+        <a class="login-logo" href="javascript:void(0)"
+          ><img src="assets/images/champLogo.png" alt="Loading Image" />
+        </a>
+        <p class="py-3 text-neutral-80 text-center fz-14">
+          <mat-progress-spinner *ngIf="!otpSend" color="accent" diameter="24">
+          </mat-progress-spinner>
+          <span
+            *ngIf="otpSend && maskedMobile && userType !== 'admin'"
+            class="text-center fw-medium text-neutral-80 fz-15 line-height-12"
+          >
+            For Privileged elevations an OTP is sent to your registered Mobile
+            number {{ maskedMobile }}<br />
+            Email Address:{{ maskedEmail }}.This OTP will be valid for
+            {{ otpTimer }}.
+          </span>
+          <span
+            *ngIf="otpSend && !maskedMobile && userType !== 'admin'"
+            class="text-center fw-medium text-neutral-80 fz-15 line-height-12"
+          >
+            For Privileged elevations an OTP is sent to your registered <br />
+            Email Address:{{ maskedEmail }}.This OTP will be valid for
+            {{ otpTimer }}.
+          </span>
+          <span
+            *ngIf="otpSend && !maskedMobile && userType === 'admin'"
+            class="text-center fw-medium text-neutral-80 fz-15 line-height-12"
+          >
+            For Privileged elevations an OTP is sent to your registered <br />
+            Email Address:{{ maskedEmail }}.
+          </span>
+          <span
+            *ngIf="otpSend && maskedMobile && userType === 'admin'"
+            class="text-center fw-medium text-neutral-80 fz-15 line-height-12"
+          >
+            For Privileged elevations an OTP is sent to your registered Mobile
+            number {{ maskedMobile }}<br />
+            Email Address:{{ maskedEmail }}.
+          </span>
+        </p>
+      </div>
+
+      <div class="fz-16">
+        <div class="d-block position-relative">
+          <div>
+            <div class="d-block mt-3 text-center">
+              <ng-otp-input
+                (onInputChange)="keyUpOtpInput($event)"
+                [config]="{
+                  placeholder: '0',
+                  allowNumbersOnly: true,
+                  inputClass: 'otp-input-r',
+                  length: otpCharLength
+                }"
+              >
+              </ng-otp-input>
+            </div>
+
+            <div class="d-block mt-3 text-center">
+              <button
+                *ngIf="!maxCountError"
+                mat-button
+                color="primary"
+                [disabled]="!resendbtn"
+                (click)="resendOtp()"
+              >
+                Resend OTP
+              </button>
+              <button
+                *ngIf="maxCountError"
+                mat-button
+                color="primary"
+                (click)="navigateToLogin()"
+              >
+                Login
+              </button>
+            </div>
+            <div class="otp-expires text-center">
+              <p class="fz-14 font-weight-medium mb-0" *ngIf="isOtpSend">
+                You can request OTP resend after
+                <countdown
+                  class="d-inline-block"
+                  style="width: 40px"
+                  #cd
+                  [config]="timeconfig"
+                  (event)="handleEvent($event)"
+                ></countdown>
+                minutes!
+              </p>
+            </div>
+            <div class="form-error-container">
+              <app-shared-alert-box
+                *ngIf="showAlert"
+                [alertMsg]="alertMsg"
+                (onClosed)="onAlertBoxClosed()"
+              >
+              </app-shared-alert-box>
+            </div>
+          </div>
+        </div>
+        <div class="d-block">
+          <button
+            [disabled]="!otpValue"
+            type="submit"
+            color="accent"
+            class="w-100 custom-btn-lg text-white"
+            mat-flat-button
+            (click)="onSubmit()"
+          >
+            Validate
+            <mat-progress-spinner
+              *ngIf="loading"
+              class="ms-2"
+              color="accent"
+              diameter="24"
+            >
+            </mat-progress-spinner>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

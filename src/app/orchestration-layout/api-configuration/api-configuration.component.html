@@ -1,0 +1,192 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> API Configuration</span>
+</div>
+<div class="pagetitle">
+  <span>API Configuration</span>
+</div>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-2">
+      <mat-label>Application Name</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="application_name"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="an_input"
+          (ngModelChange)="onSearch('application_name')"
+        />
+        <mat-option
+          *ngFor="let an of filtered_application_name_list"
+          [value]="an.source"
+        >
+          {{ an.source }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2">
+      <mat-label>Cloud Provider</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="cloud_provider"
+        (selectionChange)="getTaskNameList()"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="cp_input"
+          (ngModelChange)="onSearch('cloud_provider')"
+        />
+        <mat-option
+          *ngFor="let cp of filtered_cloud_provider_list"
+          [value]="cp"
+        >
+          {{ cp }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-3">
+      <mat-label>Task Name</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="task_name"
+        (closed)="dropDownClosed()"
+        [disabled]="!cloud_provider"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="tn_input"
+          (ngModelChange)="onSearch('task_name')"
+        />
+        <mat-option *ngFor="let tn of filtered_task_name_list" [value]="tn">
+          {{ tn }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2 mt-3 fetch-btn-div">
+      <button
+        class="custom-btn-md me-2 btnCancel add-cancel-btn-conf"
+        (click)="fetchData(application_name, cloud_provider, task_name)"
+        [disabled]="!application_name || !cloud_provider || !task_name"
+      >
+        Fetch
+      </button>
+    </div>
+    <div class="col-md-1 mt-3 ms-auto add-btn-div">
+      <button
+        class="custom-btn-md me-2 btnSubmit add-btn-conf"
+        (click)="onAddClick()"
+      >
+        Add API Configuration
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <button
+      *ngIf="(api_configuration_data | keyvalue)?.length"
+      mat-icon-button
+      aria-label="delete"
+      class="ms-auto"
+      (click)="onDeleteClick()"
+    >
+      <span [matTooltip]="'Delete'" class="delete-icon"></span>
+    </button>
+    <button
+      *ngIf="(api_configuration_data | keyvalue)?.length"
+      mat-icon-button
+      aria-label="edit"
+      class="me-5"
+      (click)="onEditClick()"
+    >
+      <span [matTooltip]="'Edit'" class="edit-icon"></span>
+    </button>
+  </div>
+
+  <div
+    class="row text-center my-3"
+    *ngIf="
+      api_configuration_data && !(api_configuration_data | keyvalue)?.length
+    "
+  >
+    <p>No configuration available</p>
+  </div>
+
+  <div
+    class="my-3"
+    *ngIf="
+      api_configuration_data && (api_configuration_data | keyvalue)?.length
+    "
+  >
+    <div class="my-3" *ngIf="api_configuration_data?.application_name">
+      <strong>Applciation Name:</strong> {{ api_configuration_data.application_name }}
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.request_url">
+      <strong>Request URL:</strong> {{ api_configuration_data.request_url }}
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.callback_url">
+      <strong>Callback URL:</strong> {{ api_configuration_data.callback_url }}
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.method">
+      <strong>Method:</strong> {{ api_configuration_data.method }}
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.headers">
+      <strong>Headers:</strong>
+      <br />
+      <pre
+        class="view-json"
+        [innerHtml]="api_configuration_data.headers | prettyjson: 4"
+      ></pre>
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.credentials">
+      <strong>Credentials:</strong> {{ api_configuration_data.credentials }}
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.request_parameters">
+      <strong>Request Parameters:</strong>
+      <br />
+      <pre
+        class="view-json"
+        [innerHtml]="api_configuration_data.request_parameters | prettyjson: 4"
+      ></pre>
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.request_parameters_map">
+      <strong>Request Parameters Map:</strong>
+      <br />
+      <pre
+        class="view-json"
+        [innerHtml]="
+          api_configuration_data.request_parameters_map | prettyjson: 4
+        "
+      ></pre>
+    </div>
+
+    <div class="my-3" *ngIf="api_configuration_data?.response_parameters_map">
+      <strong>Response Parameters Map:</strong>
+      <br />
+      <pre
+        class="view-json"
+        [innerHtml]="
+          api_configuration_data.response_parameters_map | prettyjson: 4
+        "
+      ></pre>
+    </div>
+  </div>
+</div>

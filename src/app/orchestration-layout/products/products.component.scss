@@ -1,0 +1,177 @@
+mat-toolbar {
+  background: #004a9f;
+  color: white;
+}
+
+mat-sidenav {
+  width: 201px;
+  border-right: none;
+  background: lightgray;
+  color: black;
+  text-align: center;
+}
+.main-menu {
+  height: 100%;
+  height: calc(100vh - 100px);
+}
+
+.content {
+  // height: calc(100vh - 100px);
+  // height: calc(100vh - 98px);
+  background-color: white;
+  margin-left: 16px;
+}
+.jsonForm {
+  background-color: white;
+  margin-left: 16px;
+}
+.productItem {
+  height: 210px;
+  padding: 10px;
+  position: relative;
+  /* UI Properties */
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 5px #00000029;
+  opacity: 1;
+}
+.breadcrum {
+  margin: 0px;
+  font-size: 12px;
+  font-family: var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #000000;
+}
+.pageHeading {
+  font-family: var(--htc-font-family-exo);
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.side-menu {
+  height: calc(100vh - 100px);
+  background: var(--htc-color-fafafa) 0% 0% no-repeat padding-box;
+  background: #0000001A 0% 0% no-repeat padding-box;
+  opacity: 1;
+  text-align: left;
+}
+
+.mat-drawer-content {
+  overflow: unset;
+}
+.itemName {
+  display: block;
+  text-align: left;
+  font: var(--htc-font-style-normal) normal bold var(--htc-font-size-12) /
+    var(--htc-line-spacing-16) var(--htc-font-family-exo);
+  font: normal normal bold 12px/16px var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+.itemDesc {
+  display: block;
+  text-align: left;
+  font-family: var(--htc-font-family-exo);
+  font-size: 12px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.subCategoryHeading {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  display: block;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.productImg {
+  display: block;
+  text-align: center;
+}
+.productLogo {
+  height: 75px;
+  width: 85px;
+}
+.productSubcategory {
+  width: 24%;
+}
+.configureNowBtn {
+  width: 110px;
+  height: 21px;
+  font: var(--htc-font-style-normal) normal bold var(--htc-font-size-16) /
+    var(--htc-line-spacing-21) var(--htc-font-family-exo);
+  text-align: left;
+  font-size: 16px bold;
+  font-family: var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #00a596;
+  opacity: 1;
+}
+.configureNow {
+  position: absolute;
+  bottom: 10px;
+  cursor: pointer;
+}
+.arrowIcon {
+  vertical-align: sub;
+  margin-left: 35px;
+}
+.tp-section {
+  text-align: left;
+  display: block;
+  font: normal normal 600 16px/21px var(--htc-font-family-exo);
+  letter-spacing: 0px;
+  color: #00000066;
+  opacity: 1;
+}
+.highlight {
+  color: black;
+}
+
+.unCategory {
+  display: block;
+  padding: 10px;
+}
+.inputSearch {
+  width: 200px;
+  border-bottom: 1px solid #00a596;
+  border-left: unset;
+  border-right: unset;
+  border-top: unset;
+  padding: 9px 10px 9px 40px;
+  float: right;
+  background-image: url('/assets/images/icons/search_green.png');
+  background-repeat: no-repeat;
+  background-position: 13px center;
+}
+
+.inputSearch[type='text']:focus {
+  outline: none; /* oranges! yey */
+}
+.disabledLoadMore{
+  display: none;
+}
+.disabled{
+  pointer-events: none;
+}
+.fontColor{
+  color: gray;
+}
+.float-right{
+  float: right;
+}
+.loadMore{
+  color:#00a596;
+  cursor: pointer;
+}

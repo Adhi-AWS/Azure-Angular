@@ -1,0 +1,86 @@
+<div class="row m-0">
+  <div class="col-md-2 side-menu" mode="side" opened>
+    <span class="subCategoryHeading">Service Type</span>
+    <span class="unCategory" *ngIf="productCategory.length === 0">
+        Product Item for this Category is unavailable
+    </span>
+    <span
+      *ngFor="let item of productCategory; let i = index"
+      class="tp-section"
+    >
+
+      <a
+        mat-button
+        [ngClass]="{ highlight: selectedIndex === i }"
+        (click)="selectCategory(item, i)"
+      >
+      <img *ngIf="selectedIndex === i" src="assets/images/icons/rectangle.svg"
+      alt="Loading Image" />
+        {{ item.name }}
+      </a>
+    </span>
+  </div>
+  <div class="col-md-10 main-menu">
+    <div class="row mt-1" style="margin-left: 16px;">
+    <div class="row-fluid breadcrum">
+      <span>Products/</span>
+      <span> {{ cloud_provider  | titlecase }}/</span>
+      <span class="font-weight-bold"> {{ task_name }}</span>
+      <span *ngIf="currentProduct">/<span class="font-weight-bold"> {{ currentProduct }}</span></span>
+    </div>
+    <div class="mt-4">
+      <span *ngIf="currentProduct" class="pageHeading"> {{ currentProduct }}</span>
+      <span *ngIf="!currentProduct" class="pageHeading">{{categoryName}}</span>
+      <input *ngIf="!configureNowMode" class="inputSearch" placeholder="Search Order" type="text"  [(ngModel)]="searchWord"(input)="searchThis()">
+    </div>
+  </div>
+    <div class="content row mt-1" *ngIf="!configureNowMode">
+      <span *ngIf="this.filterArray.length === 0">
+            Product Item for this SubCategory is unavailable
+      </span>
+      <div
+        *ngFor="let item of this.filterArray"
+        class="col-md-3 mb-2"
+      >
+        <div class="productItem">
+          <span class="productImg"><img class="productLogo" [src]="item.url" alt="Loading Image"/></span>
+          <span class="itemName">{{ item.name }} </span>
+          <span class="itemDesc">{{ item.description | slice: 0:55 }}  <em *ngIf="item.description.length > 55"
+            class="fa fa-ellipsis-h clickable ellipsis-icon"
+            (click)="
+              openViewJsonDialog(
+                'Item description',
+                item.description
+              )
+            "
+          ></em
+        ></span>
+          <span class="itemDesc">Price {{ item.price }} </span>
+          <div [ngClass]="adminFlag ? '' : 'disabled'" class="configureNow" (click)="configureNow(item)">
+            <span [ngClass]="adminFlag ? '' : 'fontColor'" class="configureNowBtn">Configure Now</span
+            ><span class="arrowIcon"
+              ><img
+                *ngIf="adminFlag"
+                class="float-right"
+                src="assets/images/icons/rightArrow.png"
+                alt="Loading Image"
+            /><img
+            *ngIf="!adminFlag"
+            class="float-right"
+            src="assets/images/icons/rightArrow_black.png"
+            alt="Loading Image"
+        />
+        <!-- <i  *ngIf="!adminFlag" class="fa fa-arrow-right fontColor" aria-hidden="true"></i> -->
+         </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+    <a type="button" class="float-right" (click)="loadMore()" [ngClass]="loadMoreDisable ? 'disabledLoadMore' : 'loadMore'">Load more...</a>
+    </div>
+    <div class="row jsonForm" *ngIf="configureNowMode">
+      <app-product-config [configData]="productConfigData" (backBtn)="cancelForm($event)"></app-product-config>
+    </div>
+  </div>
+</div>

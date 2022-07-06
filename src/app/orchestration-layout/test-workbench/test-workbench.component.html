@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row my-2 perf-mid-bar">
+    <div class="col-md-12" style="position: relative">
+      <p class="text-center text-white">Test Workbench</p>
+    </div>
+  </div>
+
+  <div class="col-md-12" *ngIf="payLoadDataObs">
+    <div class="search-box">
+      <span class="search-btn"><span class="search-icon"></span></span>
+      <input
+        class="search-txt"
+        type="text"
+        name="taskSearch"
+        placeholder="Type to search"
+        (keyup)="applyFilter($event)"
+      />
+    </div>
+  </div>
+
+  <div
+    class="row text-center my-5"
+    *ngIf="payLoadDataObs && !(payLoadDataObs | async)?.length"
+  >
+    <p>No Data available</p>
+  </div>
+
+  <div class="cards-div" *ngIf="payLoadDataObs">
+    <mat-card *ngFor="let card of payLoadDataObs | async">
+      <mat-card-title class="text-center">
+        <ng-container [ngSwitch]="card.cloud_provider | lowercase">
+          <ng-container *ngSwitchCase="'azure'">
+            <span class="azure" [title]="card.cloud_provider"></span>
+          </ng-container>
+          <ng-container *ngSwitchCase="'gcp'">
+            <span class="gcp" [title]="card.cloud_provider"></span>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            {{ card.cloud_provider }}
+          </ng-container>
+        </ng-container>
+      </mat-card-title>
+      <mat-card-subtitle class="text-center">{{
+        card.task_name
+      }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>{{ card.description }}</p>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions class="text-center">
+        <button
+          color="accent"
+          class="custom-btn-md"
+          mat-flat-button
+          (click)="onDeployClick(card.payload)"
+        >
+          Deploy
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>

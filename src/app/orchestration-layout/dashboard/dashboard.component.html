@@ -1,0 +1,117 @@
+<div class="container-fluid dashboard-container">
+  <div class="row mb-3">
+    <mat-tab-group (selectedTabChange)="onTabChange()">
+      <mat-tab
+        *ngFor="let obj of cloud_provider_list"
+        [label]="obj.screen_name"
+      >
+        <div class="col-md-12 mt-3 justify-content-between">
+          <div class="col-md-6 chart-card">
+            <app-shared-c3-bar-chart
+              [chartId]="obj.cloud_provider + '-top-tasks'"
+              [chartTitle]="'Top 10 ' + obj.screen_name + ' Task'"
+              frequency="Quaterly data displayed" 
+              chartHeight="250"
+              [chartDataJson]="
+                accordionDataList[obj.cloud_provider + '_top_tasks']
+              "
+              [chartDataKeys]="barChartKeys"
+              [axisRotated]="false"
+            ></app-shared-c3-bar-chart>
+          </div>
+          <div class="col-md-6 chart-card">
+            <app-shared-c3-pie-chart
+              [chartId]="obj.cloud_provider + '-transactions'"
+              chartTitle="Transactions"
+              frequency="Quaterly data displayed"
+              chartHeight="250"
+              [chartDataJson]="
+                accordionDataList[obj.cloud_provider + '_transactions']
+              "
+              [chartDataKeys]="pieChartKeys"
+              [showLegends]="true"
+            ></app-shared-c3-pie-chart>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="row">
+    <div class="col-md-6 data-row">
+      <div class="row">
+        <div (click)="transactionDetail('Total')" class="col-md-4 status-card-total link">
+          <div class="col-md-6 total-img">
+            <img src="assets/images/icons/sigma.png" 
+            alt="Loading Image"/>
+          </div>
+          <div class="col-md-6">
+            <div class="row data-Count">{{ dashboardData?.total || 0 }}</div>
+            <div class="row data-label">Total</div>
+          </div>
+        </div>
+        <div (click)="transactionDetail('SUCCESS')" class="col-md-4 status-card-success link">
+          <div class="col-md-6 total-img">
+            <img src="assets/images/icons/success_white.png" 
+            alt="Loading Image"/>
+          </div>
+          <div class="col-md-6">
+            <div class="row data-Count">{{ dashboardData?.success || 0 }}</div>
+            <div class="row data-label">Success</div>
+          </div>
+        </div>
+        <div (click)="transactionDetail('FAILED')" class="col-md-4 status-card-failed link">
+          <div class="col-md-6 total-img">
+            <img src="assets/images/icons/chart_white.png" 
+            alt="Loading Image"/>
+          </div>
+          <div class="col-md-6">
+            <div class="row data-Count">{{ dashboardData?.failure || 0 }}</div>
+            <div class="row data-label">Failed</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 htc-character-style-12"></div>
+        <div  (click)="transactionDetail('IN_PROGRESS')" class="col-md-4 status-card-running link">
+          <div class="col-md-6 total-img">
+            <img src="assets/images/icons/running.png" 
+            alt="Loading Image"/>
+          </div>
+          <div class="col-md-6">
+            <div class="row data-Count">{{ dashboardData?.in_progress || 0 }}</div>
+            <div class="row data-label">Running</div>
+          </div>
+        </div>
+        <div (click)="transactionDetail('IN_QUEUE')" class="col-md-4 status-card-queue link">
+          <div class="col-md-2 total-img">
+            <img src="assets/images/icons/queue_white.png" 
+            alt="Loading Image"/>
+          </div>
+          <div class="col-md-10">
+            <div class="row data-Count">{{ dashboardData?.in_queue || 0 }}</div>
+            <div class="row data-label">In Queue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 order-history">
+      <div class="row mt-2 col-md-12">
+        <label class="col-md-10 orderHistoryLabel">Order history</label>
+        <label
+          class="col-md-2 viewAllLabel"
+          [routerLink]="['/orchestration/transactions']"
+          (click)="viewAll()"
+          >View All</label
+        >
+      </div>
+      <app-shared-table
+        *ngIf="transactionsData"
+        [columns]="transactionsColumns"
+        [data]="transactionsData"
+        [isFilter]="false"
+        [isPagination]="false"
+        (valueClick)="goToTask($event)"
+      ></app-shared-table>
+    </div>
+  </div>
+</div>

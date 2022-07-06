@@ -1,0 +1,60 @@
+<header class="main-layout-header">
+  <mat-toolbar class="logo-top-bar" color="primary">
+    <mat-toolbar-row>
+      <a class="menu-logo" [routerLink]="'/orchestration/dashboard'"
+        ><img class="hcmp-logo" src="assets/images/champLogo.png" alt="Loading Image"
+      /></a>
+      <app-menu-bar></app-menu-bar>
+      <!-- <span class="cloud-orch-title mx-3">Cloud Orchestrator</span> -->
+      <div class="profile-btn">
+      <button
+        class="text-primary-100"  
+        mat-button
+        [matMenuTriggerFor]="beforeMenu"
+      >
+        <span class="add-disp-name"> Welcome {{ getDisplayname() }} </span>
+      <span class="profile-percent-container">
+        <span class="circle-container">
+          <span class="img-profile">
+           <img width="24" src="assets/images/user_60.png" 
+           alt="" />
+          </span>
+        </span>
+      </span>
+        <img
+          width="14"
+          mat-card-xl-image
+          class="chev-down ms-2"
+          src="assets/images/down-arrow.png"
+          alt=""
+        />
+      </button>
+      </div>
+      <mat-menu #beforeMenu="matMenu" xPosition="before" class="profile-menu">
+        <button [routerLink]="['user-profile']" mat-menu-item>
+          My profile
+        </button>
+        <mat-divider></mat-divider>
+        <button [routerLink]="['/orchestration/transactions']" mat-menu-item>
+          Track Order
+        </button>
+        <!-- <mat-divider></mat-divider>
+        <button [routerLink]="['/orchestration/approval-inbox']" mat-menu-item>
+          Approval Inbox
+        </button> -->
+        <mat-divider></mat-divider>
+        <button [routerLink]="['/orchestration/product-catalogue']" mat-menu-item>
+          Product Catalogue API
+        </button>
+        <mat-divider></mat-divider>
+        <button [routerLink]="['user-guide']" mat-menu-item>User Guide</button>
+        <mat-divider></mat-divider>
+        <!-- <button mat-menu-item>My Profile</button> -->
+        <button (click)="logout()" mat-menu-item>Logout</button>
+
+        <mat-divider></mat-divider>
+        <span class="add-license-name mat-menu-item" (click)="showLicenseDetails()"> Your license will expire in <strong class="add-license-days">{{ getLicenseExpiryDays() }} </strong> days. </span>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

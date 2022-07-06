@@ -1,0 +1,234 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="isFilter">
+      <input
+        class="inputSearch"
+        type="text"
+        name="taskSearch"
+        placeholder="Type to search"
+        (keyup)="applyFilter($event)"
+      />
+  </div>
+  <div class="col-md-12 horizontal-scroll">
+    <table aria-describedby="content" mat-table [dataSource]="dataSource" matSort>
+      <ng-container *ngFor="let col of columns" [matColumnDef]="col.colRefName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ col.colDisplayName }}
+        </th>
+
+        <td mat-cell *matCellDef="let element">
+          <ng-container
+            [ngSwitch]="valueCategory(element[col.colRefName], col)"
+          >
+            <ng-container *ngSwitchCase="'empty'">
+              <span> - </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'password'">
+              <span> ******** </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'anchorLink'">
+              <a
+                href="javascript:void(0)"
+                (click)="anchorClick(element)"
+                class="custom-btn-link"
+              >
+                {{ element[col.colRefName] }}
+              </a>
+            </ng-container>
+            <ng-container *ngSwitchCase="'showChips'">
+              <div class="my-2">
+                <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+                  <mat-chip *ngFor="let item of element[col.colRefName]">
+                    {{ item }}
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'statusIcon'">
+              <span
+                [innerHTML]="element[col.colRefName] | statusIconPipe"
+              ></span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'cloudProviderLogo'">
+              <span>{{ element[col.colRefName] | uppercase }}</span>
+              <!-- <span
+                [class]="element[col.colRefName]"
+                [title]="element[col.colRefName]"
+                >{{
+                  tmpCloudProviderList.indexOf(element[col.colRefName]) > -1
+                    ? ''
+                    : element[col.colRefName]
+                }}</span
+              > -->
+            </ng-container>
+            <ng-container *ngSwitchCase="'boolValue'">
+              <span>
+                {{ element[col.colRefName] ? 'Yes' : 'No' }}
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'shortString'">
+              <span>
+                {{ element[col.colRefName] }}
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'longString'">
+              <span>
+                {{ element[col.colRefName] | slice: 0:31 }}
+                <sub>
+                  <em
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="Read more"
+                    (click)="
+                      openViewJsonDialog(
+                        col.colDisplayName,
+                        element[col.colRefName],
+                        'longString'
+                      )
+                    "
+                  ></em
+                ></sub>
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'jsonObj'">
+              <span>
+                {{ jsonStringfied(element[col.colRefName]) | slice: 0:31 }}
+                <sub>
+                  <em
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="View JSON"
+                    (click)="
+                      openViewJsonDialog(
+                        col.colDisplayName,
+                        element[col.colRefName],
+                        'jsonObj'
+                      )
+                    "
+                  ></em
+                ></sub>
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'stringifiedJson'">
+              <span>
+                {{ element[col.colRefName] | slice: 0:31 }}
+                <sub>
+                  <em
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="View JSON"
+                    (click)="
+                      openViewJsonDialog(
+                        col.colDisplayName,
+                        element[col.colRefName],
+                        'stringifiedJson'
+                      )
+                    "
+                  ></em
+                ></sub>
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchCase="'actionIcons'">
+              <button
+                *ngIf="col.mapAdapter"
+                class="custom-btn-md mt-2 btnSubmit add-btn-table-comp"
+                (click)="mapAdapterClick(element)"
+              >
+                Map Adapter
+              </button>
+              <br *ngIf="col.mapAdapter" />
+              <button
+                *ngIf="isEdit && !isThreeDots"
+                mat-icon-button
+                aria-label="edit"
+                (click)="editClick(element)"
+              >
+                <span [matTooltip]="'Edit'" class="edit-icon"></span>
+              </button>
+              <button
+                *ngIf="isDelete && !isThreeDots"
+                mat-icon-button
+                aria-label="delete"
+                (click)="deleteClick(element)"
+              >
+                <span [matTooltip]="'Delete'" class="delete-icon"></span>
+              </button>
+              
+
+              <button 
+              *ngIf="isThreeDots" 
+               mat-icon-button [matMenuTriggerFor]="menu"
+               aria-label="threedots"
+               >    
+               <span [matTooltip]="'click'" class="three-dots-icon"></span>            
+              </button>
+              <mat-menu #menu="matMenu">
+                <button
+                *ngIf="isEdit"
+                aria-label="edit"
+                mat-menu-item
+                (click)="editClick(element)"
+                class="add-btn-height"
+              >
+                Edit
+              </button>
+              <br>              
+              <button                
+                mat-menu-item
+                class="add-btn-height"
+              >
+                Assign Role
+              </button>
+              <br>
+              <button                
+                mat-menu-item
+                class="add-btn-height"
+                (click)="changepasswordClick(element)"
+              >
+                Change Password
+              </button>
+              <br>
+              <button
+              *ngIf="isDelete"
+              aria-label="delete"
+              mat-menu-item
+              class="add-btn-height"
+              (click)="deleteClick(element)"
+            >
+              Delete
+            </button>                
+              </mat-menu>
+              <!-- <button
+                *ngIf="isThreeDots"
+                mat-icon-button
+                aria-label="threedots"
+                (click)="v3dotsClick(element)"
+              >
+                <span [matTooltip]="'click'" class="three-dots-icon"></span>
+              </button> -->
+            </ng-container>
+            <ng-container *ngSwitchCase="'other'">
+              <span>
+                {{ element[col.colRefName] }}
+              </span>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <span>
+                {{ element[col.colRefName] }}
+              </span>
+            </ng-container>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+      </tr>
+    </table>
+    <mat-paginator
+      *ngIf="isPagination"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

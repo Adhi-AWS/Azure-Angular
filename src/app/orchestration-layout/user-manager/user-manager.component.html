@@ -1,0 +1,46 @@
+<div class="breadcrum">
+    <span>Configuration/</span>
+    <span class="font-weight-bold"> Manage User</span>
+  </div>
+  <div class="pagetitle">
+    <span>Manage User</span>
+  </div>
+  <div class="container-fluid">
+    <mat-tab-group>
+    <mat-tab label="User Management">
+    <div class="row">
+      <div class="mt-3 ms-auto add-btn-div">
+        <button
+          class="custom-btn-md me-2 btnSubmit add-btn-comp"
+          (click)="onAddClick()"
+        >
+          Add User
+        </button>
+      </div>
+      <app-shared-table
+        *ngIf="manageUserData"
+        [columns]="manageApplicationColumns"
+        [data]="manageUserData"
+        [isFilter]="true"
+        [isPagination]="false" 
+        [isThreeDots]="true"
+        (valueClick)="openApplicationDetailsDialog($event)"
+        (editAction)="onEditClick($event)"
+        (deleteAction)="onDeleteClick($event)"
+        (changepasswordAction)="onChangePasswordClick($event)"         
+      ></app-shared-table>
+      <mat-paginator
+        #paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        showFirstLastButtons
+        (page)="onPageEvent($event)"
+      >
+      </mat-paginator>
+    </div>
+    </mat-tab>
+    <mat-tab label="Role Management">
+    <app-manage-role></app-manage-role>
+    </mat-tab>
+  </mat-tab-group>
+  </div>
+  

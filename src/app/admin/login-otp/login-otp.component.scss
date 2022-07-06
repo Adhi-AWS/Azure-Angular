@@ -1,0 +1,74 @@
+.login-outer-container {
+  width: 100%;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-container {
+  width: 424px;
+  min-height: 440px;
+  border: 1px solid #c5c9d8;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color:white;
+
+  .login-inner-container {
+    width: 328px;
+    margin: 0 auto;
+  }
+}
+
+.login-logo {
+  margin-top: 18px;
+  display: inline-block;
+}
+.back-link {
+  font-weight: 500;
+  text-decoration: none;
+}
+.login-header {
+  margin: 12px 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+.line-height-12 {
+  line-height: 1.5;
+}
+
+.input-helper-link {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  font-weight: 500;
+  color: #315cbb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+// reset password
+.red {
+  border: 0;
+  background-color: #ff2121;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.green {
+  border: 0;
+  background-color: #03c420;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.yellow {
+  border: 0;
+  background-color: #ffeb00;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.clear-icon {
+  width: 24px;
+}

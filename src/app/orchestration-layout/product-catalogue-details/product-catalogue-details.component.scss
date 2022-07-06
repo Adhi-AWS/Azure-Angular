@@ -1,0 +1,35 @@
+.title-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-div {
+  margin-left: auto;
+
+  button {
+    float: right;
+  }
+}
+
+.description-cls {
+  p {
+    margin: 0;
+    padding-left: 10px;
+    border-left: solid 4px #214796;
+  }
+}
+
+.json-editor-cls {
+  height: 500px;
+}
+
+.add-btn-product-cat{
+  width: 150px;
+  height: 40px !important;
+}
+
+.add-update-btn-product-cat{
+  width: 150px;
+  height: 40px !important;
+  margin-right: 73px !important;
+}

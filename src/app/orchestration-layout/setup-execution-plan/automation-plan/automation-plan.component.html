@@ -1,0 +1,32 @@
+<div class="row">
+  <button
+    *ngIf="(planData | keyvalue)?.length"
+    mat-icon-button
+    aria-label="delete"
+    class="mt-3 ms-auto"
+    (click)="onDeleteClick()"
+  >
+    <span [matTooltip]="'Delete'" class="delete-icon"></span>
+  </button>
+  <button
+    *ngIf="(planData | keyvalue)?.length"
+    mat-icon-button
+    aria-label="edit"
+    class="mt-3 me-5"
+    (click)="onEditClick()"
+  >
+    <span [matTooltip]="'Edit'" class="edit-icon"></span>
+  </button>
+
+  <div
+    class="row text-center my-5"
+    *ngIf="planData && !(planData | keyvalue)?.length"
+  >
+    <p>No configuration available</p>
+  </div>
+
+  <app-shared-keyvalue-table
+    [data]="planData"
+    *ngIf="(planData | keyvalue)?.length"
+  ></app-shared-keyvalue-table>
+</div>

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+    User ID: {{ data.id }}
+  </h2>
+  <div mat-dialog-content>
+    <app-shared-keyvalue-table [data]="data"></app-shared-keyvalue-table>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-dialog-close
+      class="ms-auto me-3 btnCancel"
+    >
+      Close
+    </button>
+  </div>
+  

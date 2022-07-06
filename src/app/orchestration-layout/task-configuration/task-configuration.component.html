@@ -1,0 +1,112 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> Task Configuration</span>
+</div>
+<div class="pagetitle">
+  <span>Task Configuration</span>
+</div>
+<div class="container-fluid">
+  <div class="row my-3">
+    <div class="col-md-2">
+      <mat-label>Cloud Provider</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="cloud_provider"
+        (selectionChange)="getTaskNameList()"
+        (closed)="dropDownClosed()"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="cp_input"
+          (ngModelChange)="onSearch('cloud_provider')"
+        />
+        <mat-option
+          *ngFor="let cp of filtered_cloud_provider_list"
+          [value]="cp"
+        >
+          {{ cp }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-3">
+      <mat-label>Task Name</mat-label>
+      <mat-select
+        placeholder="Please Select"
+        [(ngModel)]="task_name"
+        (closed)="dropDownClosed()"
+        [disabled]="!cloud_provider"
+      >
+        <input
+          matInput
+          placeholder="Search here "
+          autocomplete="off"
+          class="dropdown-input-search"
+          [(ngModel)]="tn_input"
+          (ngModelChange)="onSearch('task_name')"
+        />
+        <mat-option *ngFor="let tn of filtered_task_name_list" [value]="tn">
+          {{ tn }}
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="col-md-2 mt-3 fetch-btn-div">
+      <button
+        class="custom-btn-md me-2 btnCancel add-btn-task-conf"
+        (click)="fetchData(cloud_provider, task_name)"
+        [disabled]="!cloud_provider || !task_name"
+      >
+        Fetch
+      </button>
+    </div>
+    <div class="col-md-1 mt-3 ms-auto add-btn-div">
+      <button
+        class="custom-btn-md me-2 btnSubmit add-btn-task-conf"
+        (click)="onAddClick()"
+      >
+        Add Task Configuration
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <button
+      *ngIf="(task_configuration_data | keyvalue)?.length"
+      mat-icon-button
+      aria-label="delete"
+      class="ms-auto"
+      (click)="onDeleteClick()"
+    >
+      <span [matTooltip]="'Delete'" class="delete-icon"></span>
+    </button>
+    <button
+      *ngIf="(task_configuration_data | keyvalue)?.length"
+      mat-icon-button
+      aria-label="edit"
+      class="me-5"
+      (click)="onEditClick()"
+    >
+      <span [matTooltip]="'Edit'" class="edit-icon"></span>
+    </button>
+  </div>
+
+  <div
+    class="row text-center my-3"
+    *ngIf="
+      task_configuration_data &&
+      !(task_configuration_data?.default_values | keyvalue)?.length
+    "
+  >
+    <p>No configuration available</p>
+  </div>
+
+  <div class="my-3" *ngIf="task_configuration_data?.default_values">
+    <strong>Default Configuration:</strong>
+    <br />
+    <pre
+      class="view-json"
+      [innerHtml]="task_configuration_data.default_values | prettyjson: 4"
+    ></pre>
+  </div>
+</div>

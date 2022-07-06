@@ -1,0 +1,41 @@
+<header>
+  <app-user-header></app-user-header>
+
+</header>
+
+<div class="orch-container">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+<!-- <div class="orch-main">
+  <mat-drawer-container
+    autosize="true"
+    class="orch-drawer-container"
+    [hasBackdrop]="false"
+  >
+    <mat-drawer
+      class="animate-drawer"
+      #drawer
+      mode="side"
+      [opened]="opened"
+      [ngStyle]="{ width: width }"
+    >
+      <div class="perf-mid-bar">
+        <p class="text-center text-white">{{ title }}</p>
+      </div>
+      <app-side-navbar [stage]="stage"></app-side-navbar>
+    </mat-drawer>
+    <mat-drawer-content [ngStyle]="{ marginLeft: drawerContentMarginLeft }">
+      <button
+        class="toggle-btn m-0 p-0"
+        mat-raised-button
+        (click)="toggleDrawer(drawer)"
+      >
+        <span class="sidenav1-icon"></span>
+      </button>
+      <div class="drawer-inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div> -->

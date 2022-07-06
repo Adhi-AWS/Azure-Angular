@@ -1,0 +1,25 @@
+<div class="reportHeader mb-1">
+<div class="col-md-2 pagetitleReport">
+    <span>Reports</span>
+</div>
+<div class="row col-md-12">
+    <Label class="col-md-2">Select Report Type :</Label>
+    <div class="col-md-4 p-0">
+    <mat-select   placeholder="Select Report" [(ngModel)] = "apiUrl" (valueChange)="selectReport($event)" >
+      <mat-option *ngFor="let item of reportList"  [value]="item">
+        {{ item.name | titlecase }}
+      </mat-option>
+    </mat-select>
+    </div>
+</div>
+</div>
+
+<div clas="row">
+<iframe class="w-100 responsive-iframe" title="Reports"
+[src]=urlSafe
+frameborder="0" (onload)="resizeIframe(this)"  allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+</div>
+
+
+<!-- <iframe class="w-100" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->

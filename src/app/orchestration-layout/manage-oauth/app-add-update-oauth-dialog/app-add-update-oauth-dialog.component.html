@@ -1,0 +1,70 @@
+<h2 mat-dialog-title class="matTitleCls page-title fw-medium">
+    {{ data.app_title }} Oauth
+</h2>
+<div mat-dialog-content>
+    <form [formGroup]="addUpdateForm" class="container-fluid my-3">        
+        <div class="row">
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Provide Name</mat-label>
+                <input matInput type="text" formControlName="provider" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.provider.errors?.required">provider is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Client Id</mat-label>
+                <input matInput type="text" formControlName="client_id" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.client_id.errors?.required">client id is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>            
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Client Secret</mat-label>
+                <input matInput type="text" formControlName="client_secret" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.client_secret.errors?.required">client secret is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Config Url</mat-label>
+                <input matInput type="text" formControlName="config_url" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.config_url.errors?.required">config url is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Home Url</mat-label>
+                <input matInput type="text" formControlName="app_home_url" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.app_home_url.errors?.required">home url is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3" appearance="standard" >
+                <mat-label>Error Url</mat-label>
+                <input matInput type="text" formControlName="app_error_url" required />
+                <mat-error>
+                    <span *ngIf="addUpdateForm.controls.app_error_url.errors?.required">error url is mandatory.
+                    </span>
+                </mat-error>
+            </mat-form-field>
+        
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-dialog-close class="custom-btn-md ms-auto me-3 btnCancel add-btn-dil-user">
+        Close
+    </button>
+    <button class="custom-btn-md m-0 me-3 btnCancel add-btn-dil-user" (click)="onReset()">
+        Reset
+    </button>
+    <button  class="custom-btn-md m-0 btnSubmit add-btn-dil-user" (click)="addUpdateOauth()">
+        {{ data.app_title }}
+    </button>
+</div>
+<!-- [disabled]="!isValid" -->

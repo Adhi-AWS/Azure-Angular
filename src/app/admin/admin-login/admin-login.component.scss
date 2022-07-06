@@ -1,0 +1,184 @@
+.login-outer-container {
+  width: 100%;
+  min-height: calc(100vh - 326px);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-container {
+  width: 424px;
+  min-height: 335px;
+  border: 0px solid #c5c9d8;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: white;
+  // margin-bottom: 170px;
+
+  .login-inner-container {
+    width: 328px;
+    margin: 0 auto;
+  }
+}
+
+.login-logo {
+  margin-top: 18px;
+  display: inline-block;
+}
+.back-link {
+  font-weight: 500;
+  text-decoration: none;
+}
+.login-header {
+  margin: 12px 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+.line-height-12 {
+  line-height: 1.5;
+}
+
+.input-helper-link {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  font-weight: 500;
+  color: #315cbb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+// reset password
+.red {
+  border: 0;
+  background-color: #ff2121;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.green {
+  border: 0;
+  background-color: #03c420;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.yellow {
+  border: 0;
+  background-color: #ffeb00;
+  height: 3px;
+  width: 20px;
+  margin-right: 10px;
+}
+.clear-icon {
+  width: 24px;
+}
+
+.add-btn-login {
+  height: 35px !important;
+  width: 100px !important;
+}
+
+.btnSubmit {
+  border: 3px solid #000000 !important;
+}
+.wallpaperClass {
+  background-image: url(https://iam.htcinc.com/htcauth/module.php/htcng4/images/wallpaper.jpg);
+}
+/* Theme layout styles */
+#fullPage,
+#brandingWrapper {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-color: inherit;
+}
+
+#branding {
+  /* A background image will be added to the #branding element at run-time once the illustration image is configured in the theme. 
+       Recommended image dimensions: 1420x1200 pixels, JPG or PNG, 200 kB average, 500 kB maximum. */
+  height: 100%;
+  margin-right: 500px;
+  margin-left: 0px;
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+#contentWrapper {
+  position: relative;
+  width: 500px;
+  // height: 100%;
+  overflow: auto;
+  background-color: #ffffff; /* for IE7 */
+  margin-left: -500px;
+  margin-right: 0px;
+  display: inline-block;
+}
+#content {
+  min-height: 100%;
+  height: auto !important;
+  // margin: 0 auto -55px auto;
+  // padding: 0px 150px 0px 50px;
+}
+#header {
+  font-size: 2em;
+  font-weight: lighter;
+  font-family: "Segoe UI Light", "Segoe", "SegoeUI-Light-final", Tahoma, Helvetica, Arial, sans-serif;
+  padding-top: 90px;
+  margin-bottom: 60px;
+  min-height: 100px;
+  overflow: hidden;
+}
+#header img {
+  /* Logo image recommended dimension: 60x60 (square) or 350X35 (elongated), 4 kB average, 10 kB maximum. Transparent PNG strongly recommended. */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+#workArea,
+#header {
+  word-wrap: break-word;
+  // width: 350px;
+}
+#workArea {
+  margin-bottom: 90px;
+}
+#footerPlaceholder {
+  height: 40px;
+}
+#footer {
+  font-size: 0.78em;
+  bottom: 15px;
+  margin-left: 5pc;
+  position: fixed;
+}
+#footerLinks {
+  float: none;
+  padding-top: 10px;
+}
+#copyright {
+  color: #696969;
+}
+.pageLink {
+  color: #000000;
+  padding-left: 16px;
+}
+.btnSubmit{
+width: 250px;
+}
+.btnCancel{
+  margin-left: 5px;
+}
+.azureBtn{
+  background-color:darkslateblue;
+}
+.googleBtn{
+  background-color: white;
+    color: black;
+}
+.directoryBtn{
+  background-color:brown;
+}

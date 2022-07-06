@@ -1,0 +1,45 @@
+@use 'sass:map';
+@import 'overrides/variable.scss';
+
+.perf-mid-bar {
+  // background: map.get($mat-color-custom-list, 'primary-100');
+  height: 27px;
+  padding: 10px;
+}
+
+.dropdown-input-search {
+  font-family: var(--htc-font-family-exo);
+  font-size: inherit;
+  line-height: 3em;
+  height: 3em;
+  padding: 0 16px;
+  width: calc(100% - 32px);
+  border: none;
+  border-bottom: 1px solid #dcdcdc;
+  outline: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.add-btn-div {
+  button {
+    float: right;
+    margin-top: -12px;
+  }
+}
+
+.fetch-btn-div {
+  button {
+    // float: right;
+    margin-top: -12px;
+  }
+}
+
+.view-json {
+  outline: 1px solid #ccc;
+}
+
+.add-btn-task-conf{
+  height: 40px !important;
+}

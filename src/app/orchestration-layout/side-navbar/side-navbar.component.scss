@@ -1,0 +1,15 @@
+.orch-sidebar-list {
+  padding: 0;
+}
+
+.overflowAuto {
+  overflow: auto;
+}
+
+.overflowVisible {
+  overflow: visible;
+}
+
+::ng-deep .mat-drawer-inner-container {
+  overflow: visible;
+}

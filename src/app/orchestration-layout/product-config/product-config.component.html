@@ -1,0 +1,41 @@
+<div class="row">
+  <span class="col-6"><h2 class="font-weight-bold">Specification</h2></span>
+  <span class="col-5"> <button mat-button class="back-button mat-raised-button" (click)="back()">Back</button></span>
+  </div>
+<div class="col-md-6">
+  <form [formGroup]="productConfig" >
+  <mat-form-field class="col-12">
+    <mat-select  formControlName="cloud_credentials" placeholder="Cloud Credentials Profile"  [(ngModel)]="cloud_credentials">
+      <mat-option *ngFor="let cp of filtered_cloud_cred_list" [value]="cp.id">
+        {{ cp.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error>
+      <span *ngIf="productConfig.controls.cloud_credentials.errors?.required"
+        >Cloud Credentials is required.
+      </span>
+    </mat-error>
+  </mat-form-field>
+</form>
+</div>
+  <div class="col-6" *ngIf="cloud_credentials">
+  <json-schema-form
+    [loadExternalAssets]="loadExternalAssets"
+    [schema]="jsonForm.ui_layout.schema"
+    [layout]="jsonForm.ui_layout.layout"
+    [(data)]="jsonForm.ui_layout.data"
+    framework="material-design"
+    (onSubmit)="submitForm($event)">
+  </json-schema-form>
+  <!-- <json-schema-form
+    [loadExternalAssets]="loadExternalAssets"
+    [schema]="schema"
+    [layout]="form"
+    framework="material-design"
+    (onChanges)="formChange($event)"
+    (onSubmit)="subminForm($event)"
+    (isValid)="validateForm($event)"
+    (validationErrors)="valisationError($event)">
+  </json-schema-form> -->
+</div>
+

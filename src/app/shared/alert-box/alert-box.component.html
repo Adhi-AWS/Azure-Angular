@@ -1,0 +1,15 @@
+<ng-template [ngIf]="isOpen">
+  <div class="alert-box alert-{{ alertMsg?.type }} {{ class }} {{ classes }}">
+    <a
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      class="text-neutral-70 fz-12 input-clear-btn"
+      (click)="dismiss()"
+    >
+      <span class="clear-icon"></span>
+    </a>
+    <p>{{ alertMsg?.msg }}</p>
+    <ng-content></ng-content>
+  </div>
+</ng-template>

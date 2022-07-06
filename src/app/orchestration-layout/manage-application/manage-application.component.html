@@ -1,0 +1,36 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> Manage Application</span>
+</div>
+<div class="pagetitle">
+  <span>Manage Application</span>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="mt-3 ms-auto add-btn-div">
+      <button
+        class="custom-btn-md me-2 btnSubmit add-btn-comp"
+        (click)="onAddClick()"
+      >
+        Add Application
+      </button>
+    </div>
+    <app-shared-table
+      *ngIf="manageApplicationData"
+      [columns]="manageApplicationColumns"
+      [data]="manageApplicationData"
+      [isFilter]="false"
+      [isPagination]="false"
+      (valueClick)="openApplicationDetailsDialog($event)"
+      (editAction)="onEditClick($event)"
+      (deleteAction)="onDeleteClick($event)"
+    ></app-shared-table>
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+      (page)="onPageEvent($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

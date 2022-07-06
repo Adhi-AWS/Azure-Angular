@@ -1,0 +1,104 @@
+.main-flow-div {
+  margin: 18px 0;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: auto;
+}
+
+.single-flow-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 165px;
+}
+
+.circle-div {
+  margin-bottom: 10px;
+}
+
+.circle {
+  font-size: 60px;
+  background-color: transparent;
+  color: white;
+  border-radius: 50%;
+  line-height: 80px;
+  height: 80px;
+  width: 80px;
+  vertical-align: bottom;
+  margin: auto;
+}
+
+.success {
+  // background-color: green;
+}
+
+.failure {
+  // background-color: red;
+}
+
+.in-progress {
+  // background-color: blue;
+}
+
+.in-queue {
+  background-color: lightgray;
+}
+
+.not-started {
+  // background-color: darkgray;
+}
+
+.arrow {
+  .mat-icon {
+    width: 40px;
+    height: 40px;
+    margin: 20px 10px 0;
+  }
+}
+
+.state-title,
+.state-timestamp,
+.parallel-tasks {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.state-title {
+  font-weight: 600;
+}
+
+.state-timestamp {
+  font-weight: 500;
+  color: gray;
+}
+
+.margin-cls {
+  margin-top: -10px;
+}
+
+.queue-img {
+  margin: 0 !important;
+  padding-top: 10px;
+  width: 50px;
+  height: 60px;
+}
+.technology-img {
+  margin: 0 !important;
+  width: 20px;
+  height: 20px;
+}
+.process-img {
+  margin: 0 !important;
+  width: 80px;
+  height: 80px;
+}
+.technologyIcon{
+  margin-top: 25px;
+}

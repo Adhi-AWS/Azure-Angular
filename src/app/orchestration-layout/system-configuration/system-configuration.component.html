@@ -1,0 +1,19 @@
+<div class="breadcrum">
+  <span>Configuration/</span>
+  <span class="font-weight-bold"> System Configuration</span>
+</div>
+<div class="pagetitle">
+  <span>System Configuration</span>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <app-shared-table
+      *ngIf="systemConfigurationData"
+      [columns]="systemConfigurationColumns"
+      [data]="systemConfigurationData"
+      [isPagination]="true"
+      [isDelete]="false"
+      (editAction)="onEditClick($event)"
+    ></app-shared-table>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+    checkLatest: true
+    
+- task: CmdLine@2
+  inputs:
+    script: 'npm i && npm run ng-lint && ls -la'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Ganesh Personal'
+    appType: 'webAppLinux'
+    WebAppName: 'app-champ'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'cloud-orchestrator'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|10.14'
+    StartupCommand: 'ng serve --host 0.0.0.0 --disable-host-check --ssl true --ssl-key localhost.key --ssl-cert localhost.crt'

@@ -1,0 +1,36 @@
+<!-- <mat-toolbar>
+  <app-menu-bar-item
+    class="mx-3"
+    *ngFor="let item of menuItems"
+    [item]="item"
+  ></app-menu-bar-item>
+</mat-toolbar> -->
+
+<mat-toolbar class="menu-bar mat-elevation-z1">
+  <span *ngFor="let item of menuItems ; let i = index">
+    <!-- Handle branch node buttons here -->
+    <span *ngIf="item.display && item.subcategories && item.subcategories.length > 0">
+      <a mat-menu-item [ngClass]="{ highlight: selectedIndex === i }" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu.childMenu" class="px-1 fw-medium menu-link text-center"
+      >
+      <span class="mfUrlLink"> {{item.screen_name}}</span>
+      <!-- <span class="chevron-arrow"> -->
+        <mat-icon
+          svgIcon="chevron_left"
+          class="chevron-cls m-0"
+          [ngClass]="{
+            'chevron-active': active,
+            'chevron-rotate': menuTrigger.menuOpen
+          }"
+        ></mat-icon>
+      <!-- </span> -->
+    </a>
+      <app-menu-bar-item #menu [item]="item.subcategories" [category]="menuItems"></app-menu-bar-item>
+    </span>
+    <!-- Leaf node buttons here -->
+    <span *ngIf="item.display && (!item.subcategories || item.subcategories.length === 0)">
+      <a mat-menu-item [ngClass]="{ highlight: selectedIndex === i }" [routerLink]="item.mfUrlLink" class="px-1 fw-medium menu-link text-center mx-3">
+        <span class="mfUrlLink">{{item.screen_name}} </span>
+      </a>
+    </span>
+  </span>
+</mat-toolbar>

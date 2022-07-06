@@ -1,0 +1,220 @@
+ /* Colors: */
+    htc-color-00000066: #00000066;
+    htc-color-00000033: #00000033;
+    htc-color-ffffff66: #FFFFFF66;
+    htc-color-c9fffa: #C9FFFA;
+    htc-color-fafafa: #FAFAFA;
+    htc-color-ffffff99: #FFFFFF99;
+    htc-color-000000cc: #000000CC;
+    htc-color-ffffff: #FFFFFF;
+    htc-color-00000099: #00000099;
+    htc-color-ea515d: #EA515D;
+    htc-color-fdc64f: #FDC64F;
+    htc-color-524e9c: #524E9C;
+    htc-color-000000: #000000;
+    htc-color-479ad5: #479AD5;
+    htc-color-00a596: #00A596;
+    htc-color-00a596cc: #00A596CC;
+    
+    /* Font/text values */
+    htc-font-family-exo: Exo;
+    htc-font-style-normal: normal;
+    htc-font-weight-600: 600px;
+    htc-font-weight-medium: medium;
+    htc-font-weight-normal: normal;
+    htc-font-size-10: 10px;
+    htc-font-size-12: 12px;
+    htc-font-size-16: 16px;
+    htc-font-size-20: 20px;
+    htc-font-size-60: 60px;
+    htc-character-spacing-0: 0px;
+    htc-line-spacing-13: 13px;
+    htc-line-spacing-16: 16px;
+    htc-line-spacing-21: 21px;
+    htc-line-spacing-27: 27px;
+    htc-line-spacing-80: 80px;
+    htc-text-transform-uppercase: uppercase;
+    }
+    
+    /* Character Styles */
+    .htc-character-style-1 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-00000066);
+    }
+    .htc-character-style-2 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-normal);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-3 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-4 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-00a596);
+    }
+    .htc-character-style-5 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff99);
+    }
+    .htc-character-style-6 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff);
+    }
+    .htc-character-style-7 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ea515d);
+    }
+    .htc-character-style-8 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-00a596);
+    }
+    .htc-character-style-9 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-fdc64f);
+    }
+    .htc-character-style-10 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-11 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-12 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-524e9c);
+    }
+    .htc-character-style-13 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-20);
+    line-height: var(--htc-line-spacing-27);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-14 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-00000099);
+    }
+    .htc-character-style-15 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-normal);
+    font-size: var(--htc-font-size-10);
+    line-height: var(--htc-line-spacing-13);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff);
+    text-transform: var(--htc-text-transform-uppercase);
+    }
+    .htc-character-style-16 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-normal);
+    font-size: var(--htc-font-size-12);
+    line-height: var(--htc-line-spacing-16);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff);
+    }
+    .htc-character-style-17 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-20);
+    line-height: var(--htc-line-spacing-27);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff);
+    }
+    .htc-character-style-18 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-medium);
+    font-size: var(--htc-font-size-16);
+    line-height: var(--htc-line-spacing-21);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff99);
+    }
+    .htc-character-style-19 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-60);
+    line-height: var(--htc-line-spacing-80);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-000000);
+    }
+    .htc-character-style-20 {
+    font-family: var(--htc-font-family-exo);
+    font-style: var(--htc-font-style-normal);
+    font-weight: var(--htc-font-weight-600);
+    font-size: var(--htc-font-size-60);
+    line-height: var(--htc-line-spacing-80);
+    letter-spacing: var(--htc-character-spacing-0);
+    color: var(--htc-color-ffffff);
+    }

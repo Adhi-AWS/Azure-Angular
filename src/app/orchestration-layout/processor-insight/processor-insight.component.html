@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <div class="row block-header perf-mid-bar">
+    <div class="col-md-12" style="position: relative">
+      <p class="text-white">Processor Insight</p>
+      <div class="date-select start-date">
+        <app-shared-datepicker
+          dateLabel="Start Date"
+          [maxDate]="today"
+          (onDateSelect)="startDatePickerChanged($event)"
+        ></app-shared-datepicker>
+      </div>
+      <div class="date-select end-date">
+        <app-shared-datepicker
+          dateLabel="End Date"
+          [minDate]="startDate"
+          [maxDate]="today"
+          [changedEndDate]="changedEndDate"
+          (onDateSelect)="endDatePickerChanged($event)"
+        ></app-shared-datepicker>
+      </div>
+      <button
+        color="accent"
+        class="custom-btn-md me-3"
+        mat-flat-button
+        (click)="onFetchClick()"
+      >
+        Fetch
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="row text-center my-5"
+    *ngIf="processorInsightsData && !processorInsightsData.length"
+  >
+    <p>No Data available</p>
+  </div>
+
+  <div class="row mt-3" *ngIf="processorInsightsData?.length">
+    <table aria-describedby="content" mat-table [dataSource]="processorInsightsData" matSort>
+      <ng-container matColumnDef="processor">
+        <th mat-header-cell *matHeaderCellDef>Processor</th>
+        <td
+          mat-cell
+          *matCellDef="let element; let i = index"
+          [attr.rowspan]="cloud_providers_list.length"
+          [style.display]="displayValue(i)"
+        >
+          {{ element.processor }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cloud_provider">
+        <th mat-header-cell *matHeaderCellDef>Cloud Provider</th>
+        <td mat-cell *matCellDef="let element">
+          <span
+            [class]="element.cloud_provider"
+            [title]="element.cloud_provider"
+          >
+            <!-- {{ element.cloud_provider }} -->
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="in_progress">
+        <th mat-header-cell *matHeaderCellDef>Running</th>
+        <td mat-cell *matCellDef="let element">{{ element.in_progress }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="in_queue">
+        <th mat-header-cell *matHeaderCellDef>In Queue</th>
+        <td mat-cell *matCellDef="let element">{{ element.in_queue }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="completed">
+        <th mat-header-cell *matHeaderCellDef>Completed</th>
+        <td mat-cell *matCellDef="let element">{{ element.completed }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="failed">
+        <th mat-header-cell *matHeaderCellDef>Failed</th>
+        <td mat-cell *matCellDef="let element">{{ element.failed }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

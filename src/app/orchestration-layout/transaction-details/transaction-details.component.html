@@ -1,0 +1,199 @@
+<div class="breadcrum">
+  <span>Account/</span>
+  <span> Track Order/</span>
+  <span class="font-weight-bold"> Order Details</span>
+</div>
+<div class="pagetitle">
+  <span>Order Details</span>
+</div>
+<div class="container-fluid">
+  <div class="title-div mb-2">
+    <div class="col-md-10"></div>
+    <!-- <div
+      class="col-md-9"
+      [ngClass]="{
+        'col-md-11': !showRollback && !showRetry,
+        'col-md-10':
+          (showRollback && !showRetry) || (!showRollback && showRetry),
+        'col-md-9': showRollback && showRetry
+      }"
+    >
+      <h2 class="page-title fw-medium">Transaction Details</h2>
+    </div> -->
+
+    <div *ngIf="adminFlag && showRollback" class="col-md-1 btn-div">
+      <button
+        class="btnSubmit mx-2"
+        (click)="onRollbackClick()"
+      >
+        Rollback
+      </button>
+    </div>
+    <div  *ngIf="adminFlag && showRetry" class="col-md-1 btn-div">
+      <button
+        class="btnSubmit mx-2"
+        (click)="onRetryClick()"
+      >
+        Retry
+      </button>
+    </div>
+    <div class="col-md-1 btn-div">
+      <button
+        class="btnCancel mx-2"
+        (click)="onBackClick()"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+  <mat-tab-group *ngIf="transactionDetails">
+    <mat-tab label="Order Status">
+      <!-- <div class="col-md-12 mt-3" *ngIf="transactionDetails">
+        <table class="mb-4">
+          <tbody>
+            <tr>
+              <th>Task ID</th>
+              <th>Reference ID</th>
+              <th>Cloud Provider</th>
+              <th>Task Name</th>
+              <th>Source</th>
+              <th>Created Date</th>
+            </tr>
+            <tr>
+              <td>{{ transactionDetails.task_id }}</td>
+              <td>
+                {{ jsonStringfied(transactionDetails.references) | slice: 0:31 }}
+                <sub>
+                  <i
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="View JSON"
+                    (click)="
+                      openViewJsonDialog(
+                        'References',
+                        transactionDetails.references
+                      )
+                    "
+                  ></i
+                ></sub>
+              </td>
+              <td>{{ transactionDetails.cloud_provider }}</td>
+              <td>{{ transactionDetails.task_name }}</td>
+              <td>{{ transactionDetails.source }}</td>
+              <td>{{ transactionDetails.created_date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+      <app-shared-flow
+        *ngIf="transactionDetails"
+        [data]="stateFlowData"
+      ></app-shared-flow>
+      <div class="mt-2 float-right">
+        <span><img class="alignIcon" src="assets/images/icons/complete_small.png" alt="Loading Image"/>Complete</span>
+        <span><img class="alignIcon" src="assets/images/icons/loading.png" alt="Loading Image"/>In Progress</span>
+        <span><img class="alignIcon" src="assets/images/icons/pending_small.png" alt="Loading Image"/>Pending</span>
+        <span><img class="alignIcon" src="assets/images/icons/skip_small.png" alt="Loading Image"/>Skip</span>
+        <span><img class="alignIcon" src="assets/images/icons/failed_small.png" alt="Loading Image"/> Failed</span>
+      </div>
+      <br>
+
+      <div class="col-md-12 mt-3" *ngIf="transactionDetails">
+        <table class="mb-4" aria-describedby="content">
+          <tbody>
+            <tr>
+              <th>Task ID</th>
+              <td>{{ transactionDetails.task_id }}</td>
+              <!-- <th>Reference ID</th>
+              <th>Cloud Provider</th>
+              <th>Task Name</th>
+              <th>Source</th>
+              <th>Created Date</th> -->
+            </tr>
+            <tr>
+              <th>Reference ID</th>
+              <td>
+                {{ jsonStringfied(transactionDetails.references) | slice: 0:31 }}
+                <sub>
+                  <em
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="View JSON"
+                    (click)="
+                      openViewJsonDialog(
+                        'References',
+                        transactionDetails.references
+                      )
+                    "
+                  ></em
+                ></sub>
+              </td>
+              <!-- <td>
+                {{ jsonStringfied(transactionDetails.references) | slice: 0:31 }}
+                <sub>
+                  <i
+                    class="fa fa-ellipsis-h clickable ellipsis-icon"
+                    title="View JSON"
+                    (click)="
+                      openViewJsonDialog(
+                        'References',
+                        transactionDetails.references
+                      )
+                    "
+                  ></i
+                ></sub>
+              </td>
+              <td>{{ transactionDetails.cloud_provider }}</td>
+              <td>{{ transactionDetails.task_name }}</td>
+              <td>{{ transactionDetails.source }}</td>
+              <td>{{ transactionDetails.created_date }}</td> -->
+            </tr>
+
+            <tr>
+              <th>Cloud Provider</th>
+              <td>{{ transactionDetails.cloud_provider }}</td>
+            </tr>
+
+
+            <tr>
+              <th>Task Name</th>
+              <td>{{ transactionDetails.task_name }}</td>
+            </tr>
+
+            <tr>
+              <th>Source</th>
+              <td>{{ transactionDetails.source }}</td>
+            </tr>
+            <tr>
+              <th>Created Date</th>
+              <td>{{ transactionDetails.created_date }}</td>
+            </tr>
+
+
+
+
+
+
+            
+          </tbody>
+        </table>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Request">
+      <app-task-request
+        [taskRequestData]="transactionDetails"
+      ></app-task-request>
+    </mat-tab>
+    <mat-tab label="Transition Logs">
+      <app-task-transition-logs></app-task-transition-logs>
+    </mat-tab>
+    <mat-tab label="Audit Logs">
+      <app-task-audit-logs></app-task-audit-logs>
+    </mat-tab>
+    <mat-tab label="Response">
+      <app-task-response></app-task-response>
+    </mat-tab>
+     <mat-tab label="Cost Estimation">
+      <app-cost-summary></app-cost-summary>
+    </mat-tab>
+  </mat-tab-group>
+</div>

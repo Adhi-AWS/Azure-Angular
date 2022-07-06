@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-2 mt-3 ms-auto">
+    <button
+      class="custom-btn-md btnCancel add-btn-audit"
+      (click)="getTransitionLogs()"
+    >
+      Refresh
+    </button>
+  </div>
+  <app-shared-table
+    *ngIf="transitionLogData"
+    [columns]="transitionLogColumns"
+    [data]="transitionLogData"
+  ></app-shared-table>
+</div>
