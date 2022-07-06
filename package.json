@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build","export NODE_OPTIONS=--openssl-legacy-provider; gatsby build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint --format json --silent > jsonOutput.json",
     "report": "ng-lint-report --jsonfile jsonOutput.json",
     "ng-lint": "npm run lint && npm run report"
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider; gatsby build"
+    
   },
   "private": true,
   "dependencies": {
