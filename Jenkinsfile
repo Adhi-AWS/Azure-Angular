@@ -1,5 +1,6 @@
 
-node {
+pipeline {
+  agent any
     
     stage('Codecheck')
            {
