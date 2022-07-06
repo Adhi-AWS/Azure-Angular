@@ -21,12 +21,12 @@ node {
 //         }
         
 //     }
-//     stage('Build')
-//     {
-//         nodejs(nodeJSInstallationName: 'nodejs-18.4.0'){
-//         sh "npm install"
-//     }
-//     }
+    stage('Build')
+    {
+        nodejs(nodeJSInstallationName: 'nodejs-18.4.0'){
+        sh "npm install"
+    }
+    }
       steps {
         dir("sonarconfig") {
             git branch: 'main',
